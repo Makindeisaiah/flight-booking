@@ -1,32 +1,39 @@
+<?php
+include "includes/db.php";
+include "includes/actions.php";
+
+?>
+
 <!doctype html>
 <html lang="en">
 
 
 <!-- Mirrored from shreethemes.net/geotrip-live/geotrip/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jul 2024 16:09:01 GMT -->
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GeoTrip - Tour & Travel Booking Agency HTML Template | ThemezHub</title>
-  <link rel="icon" type="image/x-icon" href="assets/img/favicon.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GeoTrip - Tour & Travel Booking Agency HTML Template | ThemezHub</title>
+	<link rel="icon" type="image/x-icon" href="assets/img/favicon.png">
 
-  <!-- All Plugins -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/css/animation.css" rel="stylesheet">
-  <link href="assets/css/dropzone.min.css" rel="stylesheet">
-  <link href="assets/css/flatpickr.min.css" rel="stylesheet">
-  <link href="assets/css/flickity.min.css" rel="stylesheet">
-  <link href="assets/css/lightbox.min.css" rel="stylesheet">
-  <link href="assets/css/magnifypopup.css" rel="stylesheet">
-  <link href="assets/css/select2.min.css" rel="stylesheet">
-  <link href="assets/css/rangeSlider.min.css" rel="stylesheet">
-  <link href="assets/css/prism.css" rel="stylesheet">
+	<!-- All Plugins -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/css/animation.css" rel="stylesheet">
+	<link href="assets/css/dropzone.min.css" rel="stylesheet">
+	<link href="assets/css/flatpickr.min.css" rel="stylesheet">
+	<link href="assets/css/flickity.min.css" rel="stylesheet">
+	<link href="assets/css/lightbox.min.css" rel="stylesheet">
+	<link href="assets/css/magnifypopup.css" rel="stylesheet">
+	<link href="assets/css/select2.min.css" rel="stylesheet">
+	<link href="assets/css/rangeSlider.min.css" rel="stylesheet">
+	<link href="assets/css/prism.css" rel="stylesheet">
 
-  <!-- Fontawesome & Bootstrap Icons CSS -->
-  <link href="assets/css/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/css/fontawesome.css" rel="stylesheet">
+	<!-- Fontawesome & Bootstrap Icons CSS -->
+	<link href="assets/css/bootstrap-icons.css" rel="stylesheet">
+	<link href="assets/css/fontawesome.css" rel="stylesheet">
 
-  <!-- Custom CSS -->
-  <link href="assets/css/style.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -72,21 +79,29 @@
 												account</a></p>
 
 										<!-- Form START -->
-										<form class="mt-4 text-start">
+										<form class="mt-4 text-start" action="" method="POST">
 											<div class="form py-4">
+												<?php include "./includes/errors.php"; ?>
+												<?php
+												if (isset($reg_successful)) :
+												?>
+													<div class="alert alert-success alert-dismissible fade show" role="alert">
+														<p class="text-dark">Your registration is successful, Kindly verify your email address</p>
+														<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+													</div>
+												<?php endif; ?>
 												<div class="form-floating mb-4">
-													<input type="email" class="form-control" placeholder="name@example.com" required="">
-													<label>User Name</label>
+													<input type="email" name="email" class="form-control" placeholder="name@example.com" required="">
+													<label>Email</label>
 												</div>
 												<div class="form-floating mb-4">
-													<input type="password" class="form-control" id="password-field" name="password" placeholder="Password"  required="">
+													<input type="password" class="form-control" id="password-field" name="password" placeholder="Password" required="">
 													<label>Password</label>
-													<span
-														class="toggle-password position-absolute top-50 end-0 translate-middle-y me-3 fa-regular fa-eye"></span>
+													<span class="toggle-password position-absolute top-50 end-0 translate-middle-y me-3 fa-regular fa-eye"></span>
 												</div>
 
 												<div class="form-group">
-													<button type="submit" class="btn btn-primary full-width font--bold btn-lg">Log In</button>
+													<button type="submit" name="login_user" class="btn btn-primary full-width font--bold btn-lg">Log In</button>
 												</div>
 
 												<div class="modal-flex-item d-flex align-items-center justify-content-between mb-3">
@@ -102,32 +117,9 @@
 												</div>
 											</div>
 
-											<!-- Divider -->
-											<div class="prixer px-3">
-												<div class="devider-wraps position-relative">
-													<div class="devider-text text-muted-2 text-md">Sign In with Socials</div>
-												</div>
-											</div>
-
-											<!-- Google and facebook button -->
-											<div class="social-login py-4 px-md-2">
-												<ul class="row align-items-center justify-content-center g-3 p-0 m-0">
-													<li class="col"><a href="#" class="square--60 border br-dashed rounded-2 mx-auto"><i
-																class="fa-brands fa-facebook color--facebook fs-2"></i></a></li>
-													<li class="col"><a href="#" class="square--60 border br-dashed rounded-2 mx-auto"><i
-																class="fa-brands fa-whatsapp color--whatsapp fs-2"></i></a></li>
-													<li class="col"><a href="#" class="square--60 border br-dashed rounded-2 mx-auto"><i
-																class="fa-brands fa-linkedin color--linkedin fs-2"></i></a></li>
-													<li class="col"><a href="#" class="square--60 border br-dashed rounded-2 mx-auto"><i
-																class="fa-brands fa-dribbble color--dribbble fs-2"></i></a></li>
-													<li class="col"><a href="#" class="square--60 border br-dashed rounded-2 mx-auto"><i
-																class="fa-brands fa-twitter color--twitter fs-2"></i></a></li>
-												</ul>
-											</div>
 
 											<!-- Copyright -->
-											<div class="text-primary-hover mt-3 text-center"> Copyrights ©2023 GeoTrip.com. Build by <a
-													href="https://www.themezhub.com/">Themezhub</a>. </div>
+											<div class="text-primary-hover mt-3 text-center"> Copyrights ©2024 GeoTrip.com. Build by <a href="https://www.makindeisaiah.com/">MITech</a>. </div>
 										</form>
 										<!-- Form END -->
 									</div>
@@ -151,16 +143,16 @@
 	<!-- All Jquery -->
 	<!-- ============================================================== -->
 	<script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/dropzone.min.js"></script>
-    <script src="assets/js/flatpickr.js"></script>
-    <script src="assets/js/flickity.pkgd.min.js"></script>
-    <script src="assets/js/lightbox.min.js"></script>
-    <script src="assets/js/rangeslider.js"></script>
-    <script src="assets/js/select2.min.js"></script>
-    <script src="assets/js/counterup.min.js"></script>
-    <script src="assets/js/prism.js"></script>
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/dropzone.min.js"></script>
+	<script src="assets/js/flatpickr.js"></script>
+	<script src="assets/js/flickity.pkgd.min.js"></script>
+	<script src="assets/js/lightbox.min.js"></script>
+	<script src="assets/js/rangeslider.js"></script>
+	<script src="assets/js/select2.min.js"></script>
+	<script src="assets/js/counterup.min.js"></script>
+	<script src="assets/js/prism.js"></script>
 
 	<script src="assets/js/custom.js"></script>
 	<!-- ============================================================== -->
@@ -171,4 +163,5 @@
 
 
 <!-- Mirrored from shreethemes.net/geotrip-live/geotrip/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jul 2024 16:09:02 GMT -->
+
 </html>

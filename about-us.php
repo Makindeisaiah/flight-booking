@@ -47,238 +47,9 @@
         <!-- Top header  -->
         <!-- ============================================================== -->
         <!-- Start Navigation -->
-        <div class="header header-light">
-            <div class="container">
-                <nav id="navigation" class="navigation navigation-landscape">
-                    <div class="nav-header">
-                        <a class="nav-brand" href="#"><img src="assets/img/logo.png" class="logo" alt=""></a>
-                        <div class="nav-toggle"></div>
-                        <div class="mobile_nav">
-                            <ul>
-                                <li class="currencyDropdown me-2">
-                                    <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#currencyModal"><span
-											class="fw-medium">INR</span></a>
-                                </li>
-                                <li class="languageDropdown me-2">
-                                    <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#countryModal"><img src="assets/img/flag/flag.png" class="img-fluid" width="17" alt="Country"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="bg-light-primary text-primary rounded" data-bs-toggle="modal" data-bs-target="#login"><i class="fa-regular fa-circle-user fs-6"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="nav-menus-wrapper" style="transition-property: none;">
-                        <ul class="nav-menu">
-
-                            <li><a href="JavaScript:Void(0);">Home<span class="submenu-indicator"></span></a>
-                                <ul class="nav-dropdown nav-submenu">
-                                    <li>
-                                        <a href="index.php">Home version 01</a>
-                                    </li>
-                                    <li>
-                                        <a href="home-2.php">Home version 02</a>
-                                    </li>
-                                    <li>
-                                        <a href="home-3.php">Home version 03</a>
-                                    </li>
-                                    <li>
-                                        <a href="home-4.php">Home version 04</a>
-                                    </li>
-                                    <li>
-                                        <a href="home-5.php">Home version 05</a>
-                                    </li>
-                                    <li>
-                                        <a href="slider-home.php">Home version 06</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li><a href="JavaScript:Void(0);">Listing<span class="submenu-indicator"></span></a>
-                                <ul class="nav-dropdown nav-submenu">
-                                    <li><a href="JavaScript:Void(0);">Hotel<span class="submenu-indicator"></span></a>
-                                        <ul class="nav-dropdown nav-submenu">
-                                            <li><a href="hotel-list-01.php">Hotel list 01</a></li>
-                                            <li><a href="hotel-list-02.php">Hotel list 02</a></li>
-                                            <li><a href="hotel-list-03.php">Hotel list 03</a></li>
-                                            <li><a href="hotel-detail.php">Hotel Detail 01</a></li>
-                                            <li><a href="hotel-detail-2.php">Hotel Detail 02</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="JavaScript:Void(0);">Flight<span class="submenu-indicator"></span></a>
-                                        <ul class="nav-dropdown nav-submenu">
-                                            <li><a href="flight-list-01.php">Flight List 01</a></li>
-                                            <li><a href="flight-list-02.php">Flight List 02</a></li>
-                                            <li><a href="Flight-detail.php">Flight Detail</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="JavaScript:Void(0);">Rental<span class="submenu-indicator"></span></a>
-                                        <ul class="nav-dropdown nav-submenu">
-                                            <li><a href="property-list-01.php">Rental List 01</a></li>
-                                            <li><a href="property-list-02.php">Rental List 02</a></li>
-                                            <li><a href="property-list-03.php">Rental List 03</a></li>
-                                            <li><a href="rental-detail.php">Rental Detail</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="JavaScript:Void(0);">Car<span class="submenu-indicator"></span></a>
-                                        <ul class="nav-dropdown nav-submenu">
-                                            <li><a href="car-list-01.php">Car List 01</a></li>
-                                            <li><a href="car-list-02.php">Car List 02</a></li>
-                                            <li><a href="car-list-03.php">Car List 03</a></li>
-                                            <li><a href="car-detail.php">Car Detail</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="JavaScript:Void(0);">Destination<span class="submenu-indicator"></span></a>
-                                        <ul class="nav-dropdown nav-submenu">
-                                            <li><a href="destination-01.php">Destination List 01</a></li>
-                                            <li><a href="destination-02.php">Destination List 02</a></li>
-                                            <li><a href="destination-03.php">Destination List 03</a></li>
-                                            <li><a href="destination-detail.php">Destination Detail</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="join-us.php">Join with GeoTrip</a>
-                                    </li>
-                                    <li>
-                                        <a href="add-listing.php">Add Listing</a>
-                                    </li>
-                                    <li>
-                                        <a href="compare-listing.php">Compare Listing</a>
-                                    </li>
-                                    <li>
-                                        <a href="booking-page.php">Booking Page</a>
-                                    </li>
-                                    <li>
-                                        <a href="my-profile.php">User Dashboard</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li><a href="JavaScript:Void(0);">Pages<span class="submenu-indicator"></span></a>
-                                <ul class="nav-dropdown nav-submenu">
-                                    <li><a href="JavaScript:Void(0);">Blog<span class="submenu-indicator"></span></a>
-                                        <ul class="nav-dropdown nav-submenu">
-                                            <li><a href="classic-blog.php">Classic Blog</a></li>
-                                            <li><a href="blog.php">Blog Grid Style</a></li>
-                                            <li><a href="blog-detail.php">Single Blog</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="JavaScript:Void(0);">Authentication<span class="submenu-indicator"></span></a>
-                                        <ul class="nav-dropdown nav-submenu">
-                                            <li><a href="login.php">Sign In</a></li>
-                                            <li><a href="register.php">Sign Up</a></li>
-                                            <li><a href="forgot-password.php">Forgot Password</a></li>
-                                            <li><a href="two-factor-auth.php">Two factor authentication</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="about-us.php">About Us</a></li>
-                                    <li><a href="career-page.php">Career Page</a></li>
-                                    <li><a href="help-center.php">Help Center</a></li>
-                                    <li><a href="faq.php">FAQ's</a></li>
-                                    <li><a href="404.php">Error Page</a></li>
-                                    <li><a href="pricing.php">Pricing</a></li>
-                                    <li><a href="privacy-policy.php">Privacy Policy</a></li>
-                                    <li><a href="JavaScript:Void(0);">Contact Us<span class="submenu-indicator"></span></a>
-                                        <ul class="nav-dropdown nav-submenu">
-                                            <li><a href="contact-v1.php">Contact V.01</a></li>
-                                            <li><a href="contact-v2.php">Contact V0.2</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li><a href="JavaScript:Void(0);">Menu<span class="submenu-indicator"></span></a>
-                                <ul class="nav-dropdown nav-submenu xxl-menu">
-                                    <li>
-                                        <a href="home-stay.php">
-                                            <div class="mega-advance-menu">
-                                                <div class="mega-first square--50 rounded-2 gray-simple text-success fs-4"><i class="fa-solid fa-spa"></i></div>
-                                                <div class="mega-last ps-2">
-                                                    <h6 class="lh-base fs-6 font--bold m-0">Home Stays</h6>
-                                                    <p class="text-sm-muted m-0">Beautiful Place for stays</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="home-hotel.php">
-                                            <div class="mega-advance-menu">
-                                                <div class="mega-first square--50 rounded-2 gray-simple text-warning fs-4"><i class="fa-solid fa-hotel"></i></div>
-                                                <div class="mega-last ps-2">
-                                                    <h6 class="lh-base fs-6 font--bold m-0">Home Hotel</h6>
-                                                    <p class="text-sm-muted m-0">Beautiful Place for stays</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="home-flight.php">
-                                            <div class="mega-advance-menu">
-                                                <div class="mega-first square--50 rounded-2 gray-simple text-primary fs-4"><i class="fa-solid fa-plane"></i></div>
-                                                <div class="mega-last ps-2">
-                                                    <h6 class="lh-base fs-6 font--bold m-0">Home Flight</h6>
-                                                    <p class="text-sm-muted m-0">Beautiful Place for stays</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="home-rental.php">
-                                            <div class="mega-advance-menu">
-                                                <div class="mega-first square--50 rounded-2 gray-simple text-purple fs-4"><i class="fa-solid fa-eye"></i></div>
-                                                <div class="mega-last ps-2">
-                                                    <h6 class="lh-base fs-6 font--bold m-0">Home Rental</h6>
-                                                    <p class="text-sm-muted m-0">Beautiful Place for stays</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="home-car.php">
-                                            <div class="mega-advance-menu">
-                                                <div class="mega-first square--50 rounded-2 gray-simple text-seagreen fs-4"><i class="fa-brands fa-dropbox"></i></div>
-                                                <div class="mega-last ps-2">
-                                                    <h6 class="lh-base fs-6 font--bold m-0">Home Cabs</h6>
-                                                    <p class="text-sm-muted m-0">Beautiful Place for stays</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="home-stay.php">
-                                            <div class="mega-advance-menu">
-                                                <div class="mega-first square--50 rounded-2 gray-simple text-info fs-4"><i class="fa-solid fa-person-walking-luggage"></i></div>
-                                                <div class="mega-last ps-2">
-                                                    <h6 class="lh-base fs-6 font--bold m-0">Home Destination</h6>
-                                                    <p class="text-sm-muted m-0">Beautiful Place for stays</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li><a href="documantion/index.php" target="_blank">Docs</a></li>
-
-                        </ul>
-
-                        <ul class="nav-menu nav-menu-social align-to-right">
-                            <li class="currencyDropdown me-2">
-                                <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#currencyModal"><span
-										class="fw-medium">INR</span></a>
-                            </li>
-                            <li class="languageDropdown me-2">
-                                <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#countryModal"><img src="assets/img/flag/flag.png" class="img-fluid" width="17" alt="Country"></a>
-                            </li>
-                            <li class="list-buttons">
-                                <a href="#" class="bg-primary" data-bs-toggle="modal" data-bs-target="#login"><i
-										class="fa-regular fa-circle-user fs-6 me-2"></i>Sign In / Register</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </div>
+        <?php
+             include "includes/header-02.php";
+        ?>
         <!-- End Navigation -->
         <div class="clearfix"></div>
         <!-- ============================================================== -->
@@ -337,26 +108,7 @@
         </section>
         <!-- ============================ About Us Section End ================================== -->
 
-        <!-- ============================ Video Helps End ================================== -->
-        <section class="bg-cover" style="background:url(assets/img/bg-title.jpg)no-repeat;" data-overlay="5">
-            <div class="ht-150"></div>
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-xl-12 col-lg-12 col-md-12">
-
-                        <div class="video-play-wrap text-center">
-                            <div class="video-play-btn d-flex align-items-center justify-content-center">
-                                <a href="https://www.youtube.com/watch?v=A8EI6JaFbv4" data-bs-toggle="modal" data-bs-target="#popup-video" class="square--90 circle bg-white fs-2 text-primary"><i class="fa-solid fa-play"></i></a>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="ht-150"></div>
-        </section>
-        <!-- ============================ Video Helps End ================================== -->
+        
 
 
         <!-- ============================ Our facts End ================================== -->
@@ -480,122 +232,68 @@
         </section>
         <!-- ================================ Article Section Start ======================================= -->
 
+        <!-- ============================ Video Helps End ================================== -->
+        <section class="bg-cover" style="background:url(assets/img/bg-title.jpg)no-repeat;" data-overlay="5">
+            <div class="ht-150"></div>
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+
+                        <div class="video-play-wrap text-center">
+                            <div class="video-play-btn d-flex align-items-center justify-content-center">
+                                <a href="https://www.youtube.com/watch?v=A8EI6JaFbv4" data-bs-toggle="modal" data-bs-target="#popup-video" class="square--90 circle bg-white fs-2 text-primary"><i class="fa-solid fa-play"></i></a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="ht-150"></div>
+        </section>
+        <!-- ============================ Video Helps End ================================== -->
+
+        <!-- ============================ Call To Action Start ================================== -->
+		<div class="py-5 bg-primary">
+			<div class="container">
+				<div class="row align-items-center justify-content-between">
+
+					<div class="col-xl-4 col-lg-4 col-md-6">
+						<h4 class="text-light fw-bold lh-base m-0">Join our Newsletter To Keep Up To Date With Us!</h4>
+					</div>
+
+					<div class="col-xl-5 col-lg-5 col-md-6">
+						<div class="newsletter-forms mt-md-0 mt-4">
+							<form>
+								<div class="row align-items-center justify-content-between bg-white rounded-3 p-2 gx-0">
+
+									<div class="col-xl-9 col-lg-8 col-md-8">
+										<div class="form-group m-0">
+											<input type="text" class="form-control bold ps-1 border-0" placeholder="Enter Your Mail!">
+										</div>
+									</div>
+									<div class="col-xl-3 col-lg-4 col-md-4">
+										<div class="form-group m-0">
+											<button type="button" class="btn btn-dark fw-medium full-width">Submit<i
+													class="fa-solid fa-arrow-trend-up ms-2"></i></button>
+										</div>
+									</div>
+
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- ============================ Call To Action Start ================================== -->
+
 
         <!-- ============================ Footer Start ================================== -->
-        <footer class="footer skin-dark-footer">
-            <div>
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-3 col-md-4">
-                            <div class="footer-widget">
-                                <div class="d-flex align-items-start flex-column mb-3">
-                                    <div class="d-inline-block"><img src="assets/img/logo-light.png" class="img-fluid" width="160" alt="Footer Logo"></div>
-                                </div>
-                                <div class="footer-add pe-xl-3">
-                                    <p>We make your dream more beautiful & enjoyful with lots of happiness.</p>
-                                </div>
-                                <div class="foot-socials">
-                                    <ul>
-                                        <li><a href="JavaScript:Void(0);"><i class="fa-brands fa-facebook"></i></a></li>
-                                        <li><a href="JavaScript:Void(0);"><i class="fa-brands fa-linkedin"></i></a></li>
-                                        <li><a href="JavaScript:Void(0);"><i class="fa-brands fa-google-plus"></i></a></li>
-                                        <li><a href="JavaScript:Void(0);"><i class="fa-brands fa-twitter"></i></a></li>
-                                        <li><a href="JavaScript:Void(0);"><i class="fa-brands fa-dribbble"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4">
-                            <div class="footer-widget">
-                                <h4 class="widget-title">The Navigation</h4>
-                                <ul class="footer-menu">
-                                    <li><a href="JavaScript:Void(0);">Talent Marketplace</a></li>
-                                    <li><a href="JavaScript:Void(0);">Payroll Services</a></li>
-                                    <li><a href="JavaScript:Void(0);">Direct Contracts</a></li>
-                                    <li><a href="JavaScript:Void(0);">Hire Worldwide</a></li>
-                                    <li><a href="JavaScript:Void(0);">Hire in the USA</a></li>
-                                    <li><a href="JavaScript:Void(0);">How to Hire</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-2 col-md-4">
-                            <div class="footer-widget">
-                                <h4 class="widget-title">Our Resources</h4>
-                                <ul class="footer-menu">
-                                    <li><a href="JavaScript:Void(0);">Free Business tools</a></li>
-                                    <li><a href="JavaScript:Void(0);">Affiliate Program</a></li>
-                                    <li><a href="JavaScript:Void(0);">Success Stories</a></li>
-                                    <li><a href="JavaScript:Void(0);">Upwork Reviews</a></li>
-                                    <li><a href="JavaScript:Void(0);">Resources</a></li>
-                                    <li><a href="JavaScript:Void(0);">Help & Support</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-2 col-md-6">
-                            <div class="footer-widget">
-                                <h4 class="widget-title">The Company</h4>
-                                <ul class="footer-menu">
-                                    <li><a href="JavaScript:Void(0);">About Us</a></li>
-                                    <li><a href="JavaScript:Void(0);">Leadership</a></li>
-                                    <li><a href="JavaScript:Void(0);">Contact Us</a></li>
-                                    <li><a href="JavaScript:Void(0);">Investor Relations</a></li>
-                                    <li><a href="JavaScript:Void(0);">Trust, Safety & Security</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6">
-                            <div class="footer-widget">
-                                <h4 class="widget-title">Payment Methods</h4>
-                                <div class="pmt-wrap">
-                                    <img src="assets/img/payment.png" class="img-fluid" alt="">
-                                </div>
-                                <div class="our-prtwrap mt-4">
-                                    <div class="prtn-title">
-                                        <p class="text-light opacity-75 fw-medium">Our Partners</p>
-                                    </div>
-                                    <div class="prtn-thumbs d-flex align-items-center justify-content-start">
-                                        <div class="pmt-wrap pe-4">
-                                            <img src="assets/img/mytrip.png" class="img-fluid" alt="">
-                                        </div>
-                                        <div class="pmt-wrap pe-4">
-                                            <img src="assets/img/tripadv.png" class="img-fluid" alt="">
-                                        </div>
-                                        <div class="pmt-wrap pe-4">
-                                            <img src="assets/img/goibibo.png" class="img-fluid" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom border-top">
-                <div class="container">
-                    <div class="row align-items-center justify-content-between">
-
-                        <div class="col-xl-6 col-lg-6 col-md-6">
-                            <p class="mb-0">© 2023 GeoTrip Design by Themezhub.</p>
-                        </div>
-
-                        <div class="col-xl-6 col-lg-6 col-md-6">
-                            <ul class="p-0 d-flex justify-content-start justify-content-md-end text-start text-md-end m-0">
-                                <li><a href="#">Terms of services</a></li>
-                                <li class="ms-3"><a href="#">Privacy Policies</a></li>
-                                <li class="ms-3"><a href="#">Cookies</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <?php
+             include "includes/footer.php";
+		?>
         <!-- ============================ Footer End ================================== -->
 
         <!-- Log In Modal -->

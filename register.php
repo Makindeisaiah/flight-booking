@@ -1,32 +1,38 @@
+<?php
+include "includes/db.php";
+include "includes/actions.php";
+
+?>
 <!doctype html>
 <html lang="en">
 
 
 <!-- Mirrored from shreethemes.net/geotrip-live/geotrip/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jul 2024 16:09:02 GMT -->
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GeoTrip - Tour & Travel Booking Agency HTML Template | ThemezHub</title>
-  <link rel="icon" type="image/x-icon" href="assets/img/favicon.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GeoTrip - Tour & Travel Booking Agency HTML Template | ThemezHub</title>
+	<link rel="icon" type="image/x-icon" href="assets/img/favicon.png">
 
-  <!-- All Plugins -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/css/animation.css" rel="stylesheet">
-  <link href="assets/css/dropzone.min.css" rel="stylesheet">
-  <link href="assets/css/flatpickr.min.css" rel="stylesheet">
-  <link href="assets/css/flickity.min.css" rel="stylesheet">
-  <link href="assets/css/lightbox.min.css" rel="stylesheet">
-  <link href="assets/css/magnifypopup.css" rel="stylesheet">
-  <link href="assets/css/select2.min.css" rel="stylesheet">
-  <link href="assets/css/rangeSlider.min.css" rel="stylesheet">
-  <link href="assets/css/prism.css" rel="stylesheet">
+	<!-- All Plugins -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/css/animation.css" rel="stylesheet">
+	<link href="assets/css/dropzone.min.css" rel="stylesheet">
+	<link href="assets/css/flatpickr.min.css" rel="stylesheet">
+	<link href="assets/css/flickity.min.css" rel="stylesheet">
+	<link href="assets/css/lightbox.min.css" rel="stylesheet">
+	<link href="assets/css/magnifypopup.css" rel="stylesheet">
+	<link href="assets/css/select2.min.css" rel="stylesheet">
+	<link href="assets/css/rangeSlider.min.css" rel="stylesheet">
+	<link href="assets/css/prism.css" rel="stylesheet">
 
-  <!-- Fontawesome & Bootstrap Icons CSS -->
-  <link href="assets/css/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/css/fontawesome.css" rel="stylesheet">
+	<!-- Fontawesome & Bootstrap Icons CSS -->
+	<link href="assets/css/bootstrap-icons.css" rel="stylesheet">
+	<link href="assets/css/fontawesome.css" rel="stylesheet">
 
-  <!-- Custom CSS -->
-  <link href="assets/css/style.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -71,30 +77,56 @@
 										<p class="mb-0">Already a Member?<a href="login.php" class="fw-medium text-primary"> Signin</a></p>
 
 										<!-- Form START -->
-										<form class="mt-4 text-start">
+										<form class="mt-4 text-start" action="" method="POST">
 											<div class="form py-4">
+												<?php include "./includes/errors.php"; ?>
+			
+												<div style="display: flex; justify-content: space-between;">
+													<div class="form-group">
+														<label class="form-label">Enter First Name</label>
+														<input type="text" name="first_name" class="form-control" placeholder="John" required>
+													</div>
+													<div class="form-group">
+														<label class="form-label">Enter Last Name</label>
+														<input type="text" name="last_name" class="form-control" placeholder="Frank" required>
+													</div>
+													<div class="form-group">
+														<label class="form-label">Enter Phone Number</label>
+														<input type="text" name="phone_number" class="form-control" placeholder="703-329-5471" required>
+													</div>
+												</div>
+												<div>
+													<div class="form-group">
+														<label class="form-label">Date Of Birth</label>
+														<input type="date" name="date_of_birth" class="form-control" placeholder="18/01/1988" required>
+													</div>
+													<!-- <div class="form-group">
+														<label class="form-label">Avatar</label>
+														<input type="file" name="avatar" class="form-control" placeholder="Frank" required>
+													</div> -->
+												</div>
 												<div class="form-group">
 													<label class="form-label">Enter email ID</label>
-													<input type="email" class="form-control" placeholder="name@example.com">
+													<input type="email" name="email" class="form-control" placeholder="name@example.com" required>
 												</div>
 												<div class="form-group">
 													<label class="form-label">Enter Password</label>
 													<div class="position-relative">
-														<input type="password" class="form-control" id="password-field" name="password"
-															placeholder="Password">
-														<span
-															class="fa-solid fa-eye toggle-password position-absolute top-50 end-0 translate-middle-y me-3"></span>
+														<input type="password" class="form-control" id="password-field" name="password" placeholder="Password" required>
+														<span class="fa-solid fa-eye toggle-password position-absolute top-50 end-0 translate-middle-y me-3"></span>
 													</div>
 												</div>
 
 												<div class="form-group">
 													<label class="form-label">Confirm Password</label>
-													<input type="password" class="form-control" placeholder="*********">
+													<div class="position-relative">
+														<input type="password" class="form-control" id="confirm-password-field" name="confirm_password" placeholder="*********" required>
+														<span class="fa-solid fa-eye toggle-password position-absolute top-50 end-0 translate-middle-y me-3"></span>
+													</div>
 												</div>
 
 												<div class="form-group">
-													<button type="submit" class="btn btn-primary full-width font--bold btn-lg">Create An
-														Account</button>
+													<button type="submit" name="register_user" class="btn btn-primary full-width font--bold btn-lg">Create An Account</button>
 												</div>
 
 												<div class="modal-flex-item d-flex align-items-center justify-content-between mb-3">
@@ -107,32 +139,9 @@
 												</div>
 											</div>
 
-											<!-- Divider -->
-											<div class="prixer px-3">
-												<div class="devider-wraps position-relative">
-													<div class="devider-text text-muted-2 text-md">Sign-Up with Socials</div>
-												</div>
-											</div>
-
-											<!-- Google and facebook button -->
-											<div class="social-login py-4 px-md-2">
-												<ul class="row align-items-center justify-content-center g-3 p-0 m-0">
-													<li class="col"><a href="#" class="square--60 border br-dashed rounded-2 mx-auto"><i
-																class="fa-brands fa-facebook color--facebook fs-2"></i></a></li>
-													<li class="col"><a href="#" class="square--60 border br-dashed rounded-2 mx-auto"><i
-																class="fa-brands fa-whatsapp color--whatsapp fs-2"></i></a></li>
-													<li class="col"><a href="#" class="square--60 border br-dashed rounded-2 mx-auto"><i
-																class="fa-brands fa-linkedin color--linkedin fs-2"></i></a></li>
-													<li class="col"><a href="#" class="square--60 border br-dashed rounded-2 mx-auto"><i
-																class="fa-brands fa-dribbble color--dribbble fs-2"></i></a></li>
-													<li class="col"><a href="#" class="square--60 border br-dashed rounded-2 mx-auto"><i
-																class="fa-brands fa-twitter color--twitter fs-2"></i></a></li>
-												</ul>
-											</div>
 
 											<!-- Copyright -->
-											<div class="text-primary-hover mt-3 text-center"> Copyrights ©2023 GeoTrip.com. Build by <a
-													href="https://www.themezhub.com/">Themezhub</a>. </div>
+											<div class="text-primary-hover mt-3 text-center"> Copyrights ©2024 GeoTrip.com. Build by <a href="https://www.themezhub.com/">MITech</a>. </div>
 										</form>
 										<!-- Form END -->
 									</div>
@@ -156,16 +165,16 @@
 	<!-- All Jquery -->
 	<!-- ============================================================== -->
 	<script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/dropzone.min.js"></script>
-    <script src="assets/js/flatpickr.js"></script>
-    <script src="assets/js/flickity.pkgd.min.js"></script>
-    <script src="assets/js/lightbox.min.js"></script>
-    <script src="assets/js/rangeslider.js"></script>
-    <script src="assets/js/select2.min.js"></script>
-    <script src="assets/js/counterup.min.js"></script>
-    <script src="assets/js/prism.js"></script>
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/dropzone.min.js"></script>
+	<script src="assets/js/flatpickr.js"></script>
+	<script src="assets/js/flickity.pkgd.min.js"></script>
+	<script src="assets/js/lightbox.min.js"></script>
+	<script src="assets/js/rangeslider.js"></script>
+	<script src="assets/js/select2.min.js"></script>
+	<script src="assets/js/counterup.min.js"></script>
+	<script src="assets/js/prism.js"></script>
 
 	<script src="assets/js/custom.js"></script>
 	<!-- ============================================================== -->
@@ -176,4 +185,5 @@
 
 
 <!-- Mirrored from shreethemes.net/geotrip-live/geotrip/register.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jul 2024 16:09:02 GMT -->
+
 </html>
