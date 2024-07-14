@@ -185,8 +185,8 @@ if (isset($_GET['first_name'], $_GET['last_name'])) {
       echo "<h2>Search Results:</h2>";
       echo "<ul>";
       foreach ($results as $row) {
-          echo "<li>{$row['first_name']}</li>"; // Replace 'column_name' with your actual column name
-          echo "<li>{$row['last_name']}</li>"; // Replace 'column_name' with your actual column name
+          echo "<li>{$row['first_name']}</li>"; // Replace 'column_name' with your actual column 
+          echo "<li>{$row['last_name']}</li>"; // Replace 'column_name' with your actual column 
       }
       echo "</ul>";
   } else {
