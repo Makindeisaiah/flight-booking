@@ -157,7 +157,7 @@ if (isset($_POST['login_user'])) {
 //   }
 //   return true;
 // }
-// ready
+// ready fooof
 // Check if the form was submitted
 if (isset($_GET['first_name'], $_GET['last_name'])) {
   // Sanitize the search query to prevent SQL injection
