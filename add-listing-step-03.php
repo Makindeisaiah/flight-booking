@@ -436,7 +436,7 @@
 						</div>
 					</div>
 					<div class="modal-footer align-items-center justify-content-center">
-						<p>Don't have an account yet?<a href="signup.php" class="text-primary fw-medium ms-1">Sign Up</a></p>
+						<p>Don't have an account yet?<a href="register.php" class="text-primary fw-medium ms-1">Sign Up</a></p>
 					</div>
 				</div>
 			</div>

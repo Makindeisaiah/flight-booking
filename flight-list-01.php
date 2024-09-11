@@ -1,32 +1,42 @@
+<?Php
+
+include "includes/session.php";
+include "includes/actions.php";
+include "includes/db.php";
+
+
+
+?>
 <!doctype html>
 <html lang="en">
 
 
 <!-- Mirrored from shreethemes.net/geotrip-live/geotrip/flight-list-01.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jul 2024 16:08:35 GMT -->
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GeoTrip - Tour & Travel Booking Agency HTML Template | ThemezHub</title>
-  <link rel="icon" type="image/x-icon" href="assets/img/favicon.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GeoTrip - Tour & Travel Booking Agency HTML Template | ThemezHub</title>
+	<link rel="icon" type="image/x-icon" href="assets/img/favicon.png">
 
-  <!-- All Plugins -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/css/animation.css" rel="stylesheet">
-  <link href="assets/css/dropzone.min.css" rel="stylesheet">
-  <link href="assets/css/flatpickr.min.css" rel="stylesheet">
-  <link href="assets/css/flickity.min.css" rel="stylesheet">
-  <link href="assets/css/lightbox.min.css" rel="stylesheet">
-  <link href="assets/css/magnifypopup.css" rel="stylesheet">
-  <link href="assets/css/select2.min.css" rel="stylesheet">
-  <link href="assets/css/rangeSlider.min.css" rel="stylesheet">
-  <link href="assets/css/prism.css" rel="stylesheet">
+	<!-- All Plugins -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/css/animation.css" rel="stylesheet">
+	<link href="assets/css/dropzone.min.css" rel="stylesheet">
+	<link href="assets/css/flatpickr.min.css" rel="stylesheet">
+	<link href="assets/css/flickity.min.css" rel="stylesheet">
+	<link href="assets/css/lightbox.min.css" rel="stylesheet">
+	<link href="assets/css/magnifypopup.css" rel="stylesheet">
+	<link href="assets/css/select2.min.css" rel="stylesheet">
+	<link href="assets/css/rangeSlider.min.css" rel="stylesheet">
+	<link href="assets/css/prism.css" rel="stylesheet">
 
-  <!-- Fontawesome & Bootstrap Icons CSS -->
-  <link href="assets/css/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/css/fontawesome.css" rel="stylesheet">
+	<!-- Fontawesome & Bootstrap Icons CSS -->
+	<link href="assets/css/bootstrap-icons.css" rel="stylesheet">
+	<link href="assets/css/fontawesome.css" rel="stylesheet">
 
-  <!-- Custom CSS -->
-  <link href="assets/css/style.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -110,6 +120,7 @@
 			<div class="container">
 
 				<!-- Search Form -->
+
 				<div class="row justify-content-center align-items-center">
 					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
 						<div class="search-wrap position-relative">
@@ -188,7 +199,7 @@
 					<!-- Sidebar Filter Options -->
 					<div class="col-xl-3 col-lg-4 col-md-12">
 						<div class="filter-searchBar bg-white rounded-3">
-							<div class="filter-searchBar-head border-bottom">
+							<!-- <div class="filter-searchBar-head border-bottom">
 								<div class="searchBar-headerBody d-flex align-items-start justify-content-between px-3 py-3">
 									<div class="searchBar-headerfirst">
 										<h6 class="fw-bold fs-5 m-0">Filters</h6>
@@ -198,12 +209,12 @@
 										<a href="#" class="text-md fw-medium text-primary active">Clear All</a>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
 							<div class="filter-searchBar-body">
 
 								<!-- Departure & Return -->
-								<div class="searchBar-single px-3 py-3 border-bottom">
+								<!-- <div class="searchBar-single px-3 py-3 border-bottom">
 									<div class="searchBar-single-title d-flex mb-3">
 										<h6 class="sidebar-subTitle fs-6 fw-medium m-0">Departure</h6>
 									</div>
@@ -260,10 +271,10 @@
 										</ul>
 									</div>
 
-								</div>
+								</div> -->
 
 								<!-- Onward Stops -->
-								<div class="searchBar-single px-3 py-3 border-bottom">
+								<!-- <div class="searchBar-single px-3 py-3 border-bottom">
 									<div class="searchBar-single-title d-flex mb-3">
 										<h6 class="sidebar-subTitle fs-6 fw-medium m-0">Onward Stops</h6>
 									</div>
@@ -310,10 +321,10 @@
 										</ul>
 									</div>
 
-								</div>
+								</div> -->
 
 								<!-- Pricing -->
-								<div class="searchBar-single px-3 py-3 border-bottom">
+								<!-- <div class="searchBar-single px-3 py-3 border-bottom">
 									<div class="searchBar-single-title d-flex mb-3">
 										<h6 class="sidebar-subTitle fs-6 fw-medium m-0">Pricing Range in US$</h6>
 									</div>
@@ -321,10 +332,10 @@
 										<input type="text" class="js-range-slider" name="my_range" value="" data-skin="round"
 											data-type="double" data-min="0" data-max="1000" data-grid="false">
 									</div>
-								</div>
+								</div> -->
 
 								<!-- Facilities -->
-								<div class="searchBar-single px-3 py-3 border-bottom">
+								<!-- <div class="searchBar-single px-3 py-3 border-bottom">
 									<div class="searchBar-single-title d-flex mb-3">
 										<h6 class="sidebar-subTitle fs-6 fw-medium m-0">Facilities</h6>
 									</div>
@@ -363,10 +374,10 @@
 										</ul>
 									</div>
 
-								</div>
+								</div> -->
 
 								<!-- Popular Flights -->
-								<div class="searchBar-single px-3 py-3 border-bottom">
+								<!-- <div class="searchBar-single px-3 py-3 border-bottom">
 									<div class="searchBar-single-title d-flex align-items-center justify-content-between mb-3">
 										<h6 class="sidebar-subTitle fs-6 fw-medium m-0">Preferred Airlines</h6>
 										<a href="#" class="text-md fw-medium text-muted active">Reset</a>
@@ -476,14 +487,14 @@
 										</ul>
 									</div>
 
-								</div>
+								</div> -->
 
 							</div>
 						</div>
 					</div>
 
 					<!-- All Flight Lists -->
-					<div class="col-xl-9 col-lg-8 col-md-12">
+					<div class="col-xl-12 col-lg-12 col-md-12">
 
 						<div class="row align-items-center justify-content-between">
 							<div class="col-xl-4 col-lg-4 col-md-4">
@@ -523,6 +534,9 @@
 						<div class="row align-items-center g-4 mt-2">
 
 							<!-- Single Flight -->
+
+							
+
 							<div class="col-xl-12 col-lg12 col-md-12">
 								<div class="flights-accordion">
 									<div class="flights-list-item bg-white rounded-3 p-3">
@@ -581,57 +595,7 @@
 													</div>
 												</div>
 
-												<div class="row mt-4">
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="d-flex align-items-center mb-2">
-															<span class="label bg-light-success text-success me-2">Return</span>
-															<span class="text-muted text-sm">26 Jun 2023</span>
-														</div>
-													</div>
 
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="row gx-lg-5 gx-3 gy-4 align-items-center">
-															<div class="col-sm-auto">
-																<div class="d-flex align-items-center justify-content-start">
-																	<div class="d-start fl-pic">
-																		<img class="img-fluid" src="assets/img/air-2.png" width="45" alt="image">
-																	</div>
-																	<div class="d-end fl-title ps-2">
-																		<div class="text-dark fw-medium">Qutar Airways</div>
-																		<div class="text-sm text-muted">Business</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col">
-																<div class="row gx-3 align-items-center">
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">14:10</div>
-																		<div class="text-muted text-sm fw-medium">DEL</div>
-																	</div>
-
-																	<div class="col text-center">
-																		<div class="flightLine return">
-																			<div></div>
-																			<div></div>
-																		</div>
-																		<div class="text-muted text-sm fw-medium mt-3">Direct</div>
-																	</div>
-
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">19:30</div>
-																		<div class="text-muted text-sm fw-medium">DOH</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col-md-auto">
-																<div class="text-dark fw-medium">5H 30M</div>
-																<div class="text-muted text-sm fw-medium">2 Stop</div>
-															</div>
-														</div>
-													</div>
-												</div>
 											</div>
 
 											<div class="col-md-auto">
@@ -671,625 +635,14 @@
 								</div>
 							</div>
 
-							<!-- Offer Coupon Box -->
-							<div class="col-xl-12 col-lg12 col-md-12">
-								<div class="d-md-flex bg-success rounded-2 align-items-center justify-content-between px-3 py-3">
-									<div class="d-md-flex align-items-center justify-content-start">
-										<div class="flx-icon-first mb-md-0 mb-3">
-											<div class="square--60 circle bg-white"><i class="fa-solid fa-gift fs-3 text-success"></i></div>
-										</div>
-										<div class="flx-caps-first ps-2">
-											<h6 class="fs-5 fw-medium text-light mb-0">Start Exploring The World</h6>
-											<p class="text-light mb-0">Book FlightsEffortless and Earn $50+ for each booking with Booking.com
-											</p>
-										</div>
-									</div>
-									<div class="flx-last text-md-end mt-md-0 mt-4"><button type="button" class="btn btn-whites fw-medium full-width text-dark px-xl-4">Get Started</button></div>
-								</div>
-							</div>
 
-							<!-- Single Flight -->
-							<div class="col-xl-12 col-lg12 col-md-12">
+							<!--Round-Trip Flight -->
+							<!-- <div class="col-xl-12 col-lg12 col-md-12">
 								<div class="flights-accordion">
 									<div class="flights-list-item bg-white rounded-3 p-3">
 										<div class="row gy-4 align-items-center justify-content-between">
-
-											<div class="col">
-												<div class="row">
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="d-flex align-items-center mb-2">
-															<span class="label bg-light-primary text-primary me-2">Departure</span>
-															<span class="text-muted text-sm">26 Jun 2023</span>
-														</div>
-													</div>
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="row gx-lg-5 gx-3 gy-4 align-items-center">
-
-															<div class="col-sm-auto">
-																<div class="d-flex align-items-center justify-content-start">
-																	<div class="d-start fl-pic">
-																		<img class="img-fluid" src="assets/img/air-2.png" width="45" alt="image">
-																	</div>
-																	<div class="d-end fl-title ps-2">
-																		<div class="text-dark fw-medium">Qutar Airways</div>
-																		<div class="text-sm text-muted">First Class</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col">
-																<div class="row gx-3 align-items-center">
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">07:40</div>
-																		<div class="text-muted text-sm fw-medium">DOH</div>
-																	</div>
-
-																	<div class="col text-center">
-																		<div class="flightLine departure">
-																			<div></div>
-																			<div></div>
-																		</div>
-																		<div class="text-muted text-sm fw-medium mt-3">Direct</div>
-																	</div>
-
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">12:20</div>
-																		<div class="text-muted text-sm fw-medium">DEL</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col-md-auto">
-																<div class="text-dark fw-medium">4H 40M</div>
-																<div class="text-muted text-sm fw-medium">2 Stop</div>
-															</div>
-														</div>
-													</div>
-												</div>
-
-												<div class="row mt-4">
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="d-flex align-items-center mb-2">
-															<span class="label bg-light-success text-success me-2">Return</span>
-															<span class="text-muted text-sm">26 Jun 2023</span>
-														</div>
-													</div>
-
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="row gx-lg-5 gx-3 gy-4 align-items-center">
-															<div class="col-sm-auto">
-																<div class="d-flex align-items-center justify-content-start">
-																	<div class="d-start fl-pic">
-																		<img class="img-fluid" src="assets/img/air-3.png" width="45" alt="image">
-																	</div>
-																	<div class="d-end fl-title ps-2">
-																		<div class="text-dark fw-medium">Qutar Airways</div>
-																		<div class="text-sm text-muted">Business</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col">
-																<div class="row gx-3 align-items-center">
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">14:10</div>
-																		<div class="text-muted text-sm fw-medium">DEL</div>
-																	</div>
-
-																	<div class="col text-center">
-																		<div class="flightLine return">
-																			<div></div>
-																			<div></div>
-																		</div>
-																		<div class="text-muted text-sm fw-medium mt-3">Direct</div>
-																	</div>
-
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">19:30</div>
-																		<div class="text-muted text-sm fw-medium">DOH</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col-md-auto">
-																<div class="text-dark fw-medium">5H 30M</div>
-																<div class="text-muted text-sm fw-medium">2 Stop</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-md-auto">
-												<div class="d-flex items-center h-100">
-													<div class="d-lg-block d-none border br-dashed me-4"></div>
-													<div>
-														<div class="d-flex align-items-center justify-content-md-end mb-3">
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Free WiFi"><i
-																	class="fa-solid fa-wifi"></i></span>
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Food Available"><i
-																	class="fa-solid fa-utensils"></i></span>
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="One Cup Tea"><i
-																	class="fa-solid fa-mug-saucer"></i></span>
-															<span class="square--20 rounded text-xs text-muted border" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Pet Allow"><i class="fa-solid fa-dog"></i></span>
-														</div>
-														<div class="text-start text-md-end">
-															<span class="label bg-light-success text-success me-1">15% Off</span>
-															<div class="text-dark fs-3 fw-bold lh-base">US$934</div>
-															<div class="text-muted text-sm mb-2">Refundable</div>
-														</div>
-
-														<div class="flight-button-wrap">
-															<button class="btn btn-primary btn-md fw-medium full-width" data-bs-toggle="modal"
-																data-bs-target="#bookflight">
-																Select Flight<i class="fa-solid fa-arrow-trend-up ms-2"></i>
-															</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Single Flight -->
-							<div class="col-xl-12 col-lg12 col-md-12">
-								<div class="flights-accordion">
-									<div class="flights-list-item bg-white rounded-3 p-3">
-										<div class="row gy-4 align-items-center justify-content-between">
-
-											<div class="col">
-												<div class="row">
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="d-flex align-items-center mb-2">
-															<span class="label bg-light-primary text-primary me-2">Departure</span>
-															<span class="text-muted text-sm">26 Jun 2023</span>
-														</div>
-													</div>
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="row gx-lg-5 gx-3 gy-4 align-items-center">
-
-															<div class="col-sm-auto">
-																<div class="d-flex align-items-center justify-content-start">
-																	<div class="d-start fl-pic">
-																		<img class="img-fluid" src="assets/img/air-4.png" width="45" alt="image">
-																	</div>
-																	<div class="d-end fl-title ps-2">
-																		<div class="text-dark fw-medium">Qutar Airways</div>
-																		<div class="text-sm text-muted">First Class</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col">
-																<div class="row gx-3 align-items-center">
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">07:40</div>
-																		<div class="text-muted text-sm fw-medium">DOH</div>
-																	</div>
-
-																	<div class="col text-center">
-																		<div class="flightLine departure">
-																			<div></div>
-																			<div></div>
-																		</div>
-																		<div class="text-muted text-sm fw-medium mt-3">Direct</div>
-																	</div>
-
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">12:20</div>
-																		<div class="text-muted text-sm fw-medium">DEL</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col-md-auto">
-																<div class="text-dark fw-medium">4H 40M</div>
-																<div class="text-muted text-sm fw-medium">2 Stop</div>
-															</div>
-														</div>
-													</div>
-												</div>
-
-												<div class="row mt-4">
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="d-flex align-items-center mb-2">
-															<span class="label bg-light-success text-success me-2">Return</span>
-															<span class="text-muted text-sm">26 Jun 2023</span>
-														</div>
-													</div>
-
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="row gx-lg-5 gx-3 gy-4 align-items-center">
-															<div class="col-sm-auto">
-																<div class="d-flex align-items-center justify-content-start">
-																	<div class="d-start fl-pic">
-																		<img class="img-fluid" src="assets/img/air-1.png" width="45" alt="image">
-																	</div>
-																	<div class="d-end fl-title ps-2">
-																		<div class="text-dark fw-medium">Qutar Airways</div>
-																		<div class="text-sm text-muted">Business</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col">
-																<div class="row gx-3 align-items-center">
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">14:10</div>
-																		<div class="text-muted text-sm fw-medium">DEL</div>
-																	</div>
-
-																	<div class="col text-center">
-																		<div class="flightLine return">
-																			<div></div>
-																			<div></div>
-																		</div>
-																		<div class="text-muted text-sm fw-medium mt-3">Direct</div>
-																	</div>
-
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">19:30</div>
-																		<div class="text-muted text-sm fw-medium">DOH</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col-md-auto">
-																<div class="text-dark fw-medium">5H 30M</div>
-																<div class="text-muted text-sm fw-medium">2 Stop</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-md-auto">
-												<div class="d-flex items-center h-100">
-													<div class="d-lg-block d-none border br-dashed me-4"></div>
-													<div>
-														<div class="d-flex align-items-center justify-content-md-end mb-3">
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Free WiFi"><i
-																	class="fa-solid fa-wifi"></i></span>
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Food Available"><i
-																	class="fa-solid fa-utensils"></i></span>
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="One Cup Tea"><i
-																	class="fa-solid fa-mug-saucer"></i></span>
-															<span class="square--20 rounded text-xs text-muted border" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Pet Allow"><i class="fa-solid fa-dog"></i></span>
-														</div>
-														<div class="text-start text-md-end">
-															<span class="label bg-light-success text-success me-1">15% Off</span>
-															<div class="text-dark fs-3 fw-bold lh-base">US$934</div>
-															<div class="text-muted text-sm mb-2">Refundable</div>
-														</div>
-
-														<div class="flight-button-wrap">
-															<button class="btn btn-primary btn-md fw-medium full-width" data-bs-toggle="modal"
-																data-bs-target="#bookflight">
-																Select Flight<i class="fa-solid fa-arrow-trend-up ms-2"></i>
-															</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Single Flight -->
-							<div class="col-xl-12 col-lg12 col-md-12">
-								<div class="flights-accordion">
-									<div class="flights-list-item bg-white rounded-3 p-3">
-										<div class="row gy-4 align-items-center justify-content-between">
-
-											<div class="col">
-												<div class="row">
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="d-flex align-items-center mb-2">
-															<span class="label bg-light-primary text-primary me-2">Departure</span>
-															<span class="text-muted text-sm">26 Jun 2023</span>
-														</div>
-													</div>
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="row gx-lg-5 gx-3 gy-4 align-items-center">
-
-															<div class="col-sm-auto">
-																<div class="d-flex align-items-center justify-content-start">
-																	<div class="d-start fl-pic">
-																		<img class="img-fluid" src="assets/img/air-2.png" width="45" alt="image">
-																	</div>
-																	<div class="d-end fl-title ps-2">
-																		<div class="text-dark fw-medium">Qutar Airways</div>
-																		<div class="text-sm text-muted">First Class</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col">
-																<div class="row gx-3 align-items-center">
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">07:40</div>
-																		<div class="text-muted text-sm fw-medium">DOH</div>
-																	</div>
-
-																	<div class="col text-center">
-																		<div class="flightLine departure">
-																			<div></div>
-																			<div></div>
-																		</div>
-																		<div class="text-muted text-sm fw-medium mt-3">Direct</div>
-																	</div>
-
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">12:20</div>
-																		<div class="text-muted text-sm fw-medium">DEL</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col-md-auto">
-																<div class="text-dark fw-medium">4H 40M</div>
-																<div class="text-muted text-sm fw-medium">2 Stop</div>
-															</div>
-														</div>
-													</div>
-												</div>
-
-												<div class="row mt-4">
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="d-flex align-items-center mb-2">
-															<span class="label bg-light-success text-success me-2">Return</span>
-															<span class="text-muted text-sm">26 Jun 2023</span>
-														</div>
-													</div>
-
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="row gx-lg-5 gx-3 gy-4 align-items-center">
-															<div class="col-sm-auto">
-																<div class="d-flex align-items-center justify-content-start">
-																	<div class="d-start fl-pic">
-																		<img class="img-fluid" src="assets/img/air-4.png" width="45" alt="image">
-																	</div>
-																	<div class="d-end fl-title ps-2">
-																		<div class="text-dark fw-medium">Qutar Airways</div>
-																		<div class="text-sm text-muted">Business</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col">
-																<div class="row gx-3 align-items-center">
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">14:10</div>
-																		<div class="text-muted text-sm fw-medium">DEL</div>
-																	</div>
-
-																	<div class="col text-center">
-																		<div class="flightLine return">
-																			<div></div>
-																			<div></div>
-																		</div>
-																		<div class="text-muted text-sm fw-medium mt-3">Direct</div>
-																	</div>
-
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">19:30</div>
-																		<div class="text-muted text-sm fw-medium">DOH</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col-md-auto">
-																<div class="text-dark fw-medium">5H 30M</div>
-																<div class="text-muted text-sm fw-medium">2 Stop</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-md-auto">
-												<div class="d-flex items-center h-100">
-													<div class="d-lg-block d-none border br-dashed me-4"></div>
-													<div>
-														<div class="d-flex align-items-center justify-content-md-end mb-3">
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Free WiFi"><i
-																	class="fa-solid fa-wifi"></i></span>
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Food Available"><i
-																	class="fa-solid fa-utensils"></i></span>
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="One Cup Tea"><i
-																	class="fa-solid fa-mug-saucer"></i></span>
-															<span class="square--20 rounded text-xs text-muted border" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Pet Allow"><i class="fa-solid fa-dog"></i></span>
-														</div>
-														<div class="text-start text-md-end">
-															<span class="label bg-light-success text-success me-1">15% Off</span>
-															<div class="text-dark fs-3 fw-bold lh-base">US$934</div>
-															<div class="text-muted text-sm mb-2">Refundable</div>
-														</div>
-
-														<div class="flight-button-wrap">
-															<button class="btn btn-primary btn-md fw-medium full-width" data-bs-toggle="modal"
-																data-bs-target="#bookflight">
-																Select Flight<i class="fa-solid fa-arrow-trend-up ms-2"></i>
-															</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Single Flight -->
-							<div class="col-xl-12 col-lg12 col-md-12">
-								<div class="flights-accordion">
-									<div class="flights-list-item bg-white rounded-3 p-3">
-										<div class="row gy-4 align-items-center justify-content-between">
-
-											<div class="col">
-												<div class="row">
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="d-flex align-items-center mb-2">
-															<span class="label bg-light-primary text-primary me-2">Departure</span>
-															<span class="text-muted text-sm">26 Jun 2023</span>
-														</div>
-													</div>
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="row gx-lg-5 gx-3 gy-4 align-items-center">
-
-															<div class="col-sm-auto">
-																<div class="d-flex align-items-center justify-content-start">
-																	<div class="d-start fl-pic">
-																		<img class="img-fluid" src="assets/img/air-3.png" width="45" alt="image">
-																	</div>
-																	<div class="d-end fl-title ps-2">
-																		<div class="text-dark fw-medium">Qutar Airways</div>
-																		<div class="text-sm text-muted">First Class</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col">
-																<div class="row gx-3 align-items-center">
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">07:40</div>
-																		<div class="text-muted text-sm fw-medium">DOH</div>
-																	</div>
-
-																	<div class="col text-center">
-																		<div class="flightLine departure">
-																			<div></div>
-																			<div></div>
-																		</div>
-																		<div class="text-muted text-sm fw-medium mt-3">Direct</div>
-																	</div>
-
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">12:20</div>
-																		<div class="text-muted text-sm fw-medium">DEL</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col-md-auto">
-																<div class="text-dark fw-medium">4H 40M</div>
-																<div class="text-muted text-sm fw-medium">2 Stop</div>
-															</div>
-														</div>
-													</div>
-												</div>
-
-												<div class="row mt-4">
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="d-flex align-items-center mb-2">
-															<span class="label bg-light-success text-success me-2">Return</span>
-															<span class="text-muted text-sm">26 Jun 2023</span>
-														</div>
-													</div>
-
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="row gx-lg-5 gx-3 gy-4 align-items-center">
-															<div class="col-sm-auto">
-																<div class="d-flex align-items-center justify-content-start">
-																	<div class="d-start fl-pic">
-																		<img class="img-fluid" src="assets/img/air-1.png" width="45" alt="image">
-																	</div>
-																	<div class="d-end fl-title ps-2">
-																		<div class="text-dark fw-medium">Qutar Airways</div>
-																		<div class="text-sm text-muted">Business</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col">
-																<div class="row gx-3 align-items-center">
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">14:10</div>
-																		<div class="text-muted text-sm fw-medium">DEL</div>
-																	</div>
-
-																	<div class="col text-center">
-																		<div class="flightLine return">
-																			<div></div>
-																			<div></div>
-																		</div>
-																		<div class="text-muted text-sm fw-medium mt-3">Direct</div>
-																	</div>
-
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">19:30</div>
-																		<div class="text-muted text-sm fw-medium">DOH</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col-md-auto">
-																<div class="text-dark fw-medium">5H 30M</div>
-																<div class="text-muted text-sm fw-medium">2 Stop</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-md-auto">
-												<div class="d-flex items-center h-100">
-													<div class="d-lg-block d-none border br-dashed me-4"></div>
-													<div>
-														<div class="d-flex align-items-center justify-content-md-end mb-3">
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Free WiFi"><i
-																	class="fa-solid fa-wifi"></i></span>
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Food Available"><i
-																	class="fa-solid fa-utensils"></i></span>
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="One Cup Tea"><i
-																	class="fa-solid fa-mug-saucer"></i></span>
-															<span class="square--20 rounded text-xs text-muted border" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Pet Allow"><i class="fa-solid fa-dog"></i></span>
-														</div>
-														<div class="text-start text-md-end">
-															<span class="label bg-light-success text-success me-1">15% Off</span>
-															<div class="text-dark fs-3 fw-bold lh-base">US$934</div>
-															<div class="text-muted text-sm mb-2">Refundable</div>
-														</div>
-
-														<div class="flight-button-wrap">
-															<button class="btn btn-primary btn-md fw-medium full-width" data-bs-toggle="modal"
-																data-bs-target="#bookflight">
-																Select Flight<i class="fa-solid fa-arrow-trend-up ms-2"></i>
-															</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Single Flight -->
-							<div class="col-xl-12 col-lg12 col-md-12">
-								<div class="flights-accordion">
-									<div class="flights-list-item bg-white rounded-3 p-3">
-										<div class="row gy-4 align-items-center justify-content-between">
-
+                                  
+								
 											<div class="col">
 												<div class="row">
 													<div class="col-xl-12 col-lg-12 col-md-12">
@@ -1428,159 +781,13 @@
 													</div>
 												</div>
 											</div>
+										
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
-							<!-- Single Flight -->
-							<div class="col-xl-12 col-lg12 col-md-12">
-								<div class="flights-accordion">
-									<div class="flights-list-item bg-white rounded-3 p-3">
-										<div class="row gy-4 align-items-center justify-content-between">
 
-											<div class="col">
-												<div class="row">
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="d-flex align-items-center mb-2">
-															<span class="label bg-light-primary text-primary me-2">Departure</span>
-															<span class="text-muted text-sm">26 Jun 2023</span>
-														</div>
-													</div>
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="row gx-lg-5 gx-3 gy-4 align-items-center">
-
-															<div class="col-sm-auto">
-																<div class="d-flex align-items-center justify-content-start">
-																	<div class="d-start fl-pic">
-																		<img class="img-fluid" src="assets/img/air-4.png" width="45" alt="image">
-																	</div>
-																	<div class="d-end fl-title ps-2">
-																		<div class="text-dark fw-medium">Qutar Airways</div>
-																		<div class="text-sm text-muted">First Class</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col">
-																<div class="row gx-3 align-items-center">
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">07:40</div>
-																		<div class="text-muted text-sm fw-medium">DOH</div>
-																	</div>
-
-																	<div class="col text-center">
-																		<div class="flightLine departure">
-																			<div></div>
-																			<div></div>
-																		</div>
-																		<div class="text-muted text-sm fw-medium mt-3">Direct</div>
-																	</div>
-
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">12:20</div>
-																		<div class="text-muted text-sm fw-medium">DEL</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col-md-auto">
-																<div class="text-dark fw-medium">4H 40M</div>
-																<div class="text-muted text-sm fw-medium">2 Stop</div>
-															</div>
-														</div>
-													</div>
-												</div>
-
-												<div class="row mt-4">
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="d-flex align-items-center mb-2">
-															<span class="label bg-light-success text-success me-2">Return</span>
-															<span class="text-muted text-sm">26 Jun 2023</span>
-														</div>
-													</div>
-
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="row gx-lg-5 gx-3 gy-4 align-items-center">
-															<div class="col-sm-auto">
-																<div class="d-flex align-items-center justify-content-start">
-																	<div class="d-start fl-pic">
-																		<img class="img-fluid" src="assets/img/air-2.png" width="45" alt="image">
-																	</div>
-																	<div class="d-end fl-title ps-2">
-																		<div class="text-dark fw-medium">Qutar Airways</div>
-																		<div class="text-sm text-muted">Business</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col">
-																<div class="row gx-3 align-items-center">
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">14:10</div>
-																		<div class="text-muted text-sm fw-medium">DEL</div>
-																	</div>
-
-																	<div class="col text-center">
-																		<div class="flightLine return">
-																			<div></div>
-																			<div></div>
-																		</div>
-																		<div class="text-muted text-sm fw-medium mt-3">Direct</div>
-																	</div>
-
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">19:30</div>
-																		<div class="text-muted text-sm fw-medium">DOH</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col-md-auto">
-																<div class="text-dark fw-medium">5H 30M</div>
-																<div class="text-muted text-sm fw-medium">2 Stop</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-md-auto">
-												<div class="d-flex items-center h-100">
-													<div class="d-lg-block d-none border br-dashed me-4"></div>
-													<div>
-														<div class="d-flex align-items-center justify-content-md-end mb-3">
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Free WiFi"><i
-																	class="fa-solid fa-wifi"></i></span>
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Food Available"><i
-																	class="fa-solid fa-utensils"></i></span>
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="One Cup Tea"><i
-																	class="fa-solid fa-mug-saucer"></i></span>
-															<span class="square--20 rounded text-xs text-muted border" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Pet Allow"><i class="fa-solid fa-dog"></i></span>
-														</div>
-														<div class="text-start text-md-end">
-															<span class="label bg-light-success text-success me-1">15% Off</span>
-															<div class="text-dark fs-3 fw-bold lh-base">US$934</div>
-															<div class="text-muted text-sm mb-2">Refundable</div>
-														</div>
-
-														<div class="flight-button-wrap">
-															<button class="btn btn-primary btn-md fw-medium full-width" data-bs-toggle="modal"
-																data-bs-target="#bookflight">
-																Select Flight<i class="fa-solid fa-arrow-trend-up ms-2"></i>
-															</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
 
 							<div class="col-xl-12 col-lg-12 col-12">
 								<div class="pags card py-2 px-5">
@@ -1990,410 +1197,410 @@
 
 		<!-- Choose Currency Modal -->
 		<div class="modal modal-lg fade" id="currencyModal" tabindex="-1" aria-labelledby="currenyModalLabel"
-		  aria-hidden="true">
-		  <div class="modal-dialog">
-			<div class="modal-content">
-			  <div class="modal-header">
-				<h4 class="modal-title fs-6" id="currenyModalLabel">Select Your Currency</h4>
-				<a href="#" class="text-muted fs-4" data-bs-dismiss="modal" aria-label="Close"><i
-					class="fa-solid fa-square-xmark"></i></a>
-			  </div>
-			  <div class="modal-body">
-				<div class="allCurrencylist">
+			aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title fs-6" id="currenyModalLabel">Select Your Currency</h4>
+						<a href="#" class="text-muted fs-4" data-bs-dismiss="modal" aria-label="Close"><i
+								class="fa-solid fa-square-xmark"></i></a>
+					</div>
+					<div class="modal-body">
+						<div class="allCurrencylist">
 
-				  <div class="suggestedCurrencylist-wrap mb-4">
-					<div class="d-inline-block mb-0 ps-3">
-					  <h5 class="fs-6 fw-bold">Suggested Currency For you</h5>
-					</div>
-					<div class="suggestedCurrencylists">
-					  <ul
-						class="row align-items-center justify-content-start row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-2 gy-2 gx-3 m-0 p-0">
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">United State Dollar</div>
-							<div class="text-muted-2 text-md text-uppercase">USD</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Pound Sterling</div>
-							<div class="text-muted-2 text-md text-uppercase">GBP</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency active" href="#">
-							<div class="text-dark text-md fw-medium">Indian Rupees</div>
-							<div class="text-muted-2 text-md text-uppercase">Inr</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Euro</div>
-							<div class="text-muted-2 text-md text-uppercase">EUR</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Australian Dollar</div>
-							<div class="text-muted-2 text-md text-uppercase">aud</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Thai Baht</div>
-							<div class="text-muted-2 text-md text-uppercase">thb</div>
-						  </a>
-						</li>
-					  </ul>
-					</div>
-				  </div>
+							<div class="suggestedCurrencylist-wrap mb-4">
+								<div class="d-inline-block mb-0 ps-3">
+									<h5 class="fs-6 fw-bold">Suggested Currency For you</h5>
+								</div>
+								<div class="suggestedCurrencylists">
+									<ul
+										class="row align-items-center justify-content-start row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-2 gy-2 gx-3 m-0 p-0">
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">United State Dollar</div>
+												<div class="text-muted-2 text-md text-uppercase">USD</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Pound Sterling</div>
+												<div class="text-muted-2 text-md text-uppercase">GBP</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency active" href="#">
+												<div class="text-dark text-md fw-medium">Indian Rupees</div>
+												<div class="text-muted-2 text-md text-uppercase">Inr</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Euro</div>
+												<div class="text-muted-2 text-md text-uppercase">EUR</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Australian Dollar</div>
+												<div class="text-muted-2 text-md text-uppercase">aud</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Thai Baht</div>
+												<div class="text-muted-2 text-md text-uppercase">thb</div>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
 
-				  <div class="suggestedCurrencylist-wrap">
-					<div class="d-inline-block mb-0 ps-3">
-					  <h5 class="fs-6 fw-bold">All Currencies</h5>
-					</div>
-					<div class="suggestedCurrencylists">
-					  <ul
-						class="row align-items-center justify-content-start row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-2 gy-2 gx-3 m-0 p-0">
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">United State Dollar</div>
-							<div class="text-muted-2 text-md text-uppercase">USD</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Property currency</div>
-							<div class="text-muted-2 text-md text-uppercase">GBP</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Argentine Peso</div>
-							<div class="text-muted-2 text-md text-uppercase">EUR</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Azerbaijani Manat</div>
-							<div class="text-muted-2 text-md text-uppercase">Inr</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Australian Dollar</div>
-							<div class="text-muted-2 text-md text-uppercase">aud</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Bahraini Dinar</div>
-							<div class="text-muted-2 text-md text-uppercase">thb</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Brazilian Real</div>
-							<div class="text-muted-2 text-md text-uppercase">USD</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Bulgarian Lev</div>
-							<div class="text-muted-2 text-md text-uppercase">GBP</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Canadian Dollar</div>
-							<div class="text-muted-2 text-md text-uppercase">EUR</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Chilean Peso</div>
-							<div class="text-muted-2 text-md text-uppercase">Inr</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Colombian Peso</div>
-							<div class="text-muted-2 text-md text-uppercase">aud</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Danish Krone</div>
-							<div class="text-muted-2 text-md text-uppercase">thb</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Egyptian Pound</div>
-							<div class="text-muted-2 text-md text-uppercase">USD</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Hungarian Forint</div>
-							<div class="text-muted-2 text-md text-uppercase">GBP</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Japanese Yen</div>
-							<div class="text-muted-2 text-md text-uppercase">EUR</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Jordanian Dinar</div>
-							<div class="text-muted-2 text-md text-uppercase">Inr</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Kuwaiti Dinar</div>
-							<div class="text-muted-2 text-md text-uppercase">aud</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Malaysian Ringgit</div>
-							<div class="text-muted-2 text-md text-uppercase">thb</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCurrency" href="#">
-							<div class="text-dark text-md fw-medium">Singapore Dollar</div>
-							<div class="text-muted-2 text-md text-uppercase">thb</div>
-						  </a>
-						</li>
-					  </ul>
-					</div>
-				  </div>
+							<div class="suggestedCurrencylist-wrap">
+								<div class="d-inline-block mb-0 ps-3">
+									<h5 class="fs-6 fw-bold">All Currencies</h5>
+								</div>
+								<div class="suggestedCurrencylists">
+									<ul
+										class="row align-items-center justify-content-start row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-2 gy-2 gx-3 m-0 p-0">
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">United State Dollar</div>
+												<div class="text-muted-2 text-md text-uppercase">USD</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Property currency</div>
+												<div class="text-muted-2 text-md text-uppercase">GBP</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Argentine Peso</div>
+												<div class="text-muted-2 text-md text-uppercase">EUR</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Azerbaijani Manat</div>
+												<div class="text-muted-2 text-md text-uppercase">Inr</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Australian Dollar</div>
+												<div class="text-muted-2 text-md text-uppercase">aud</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Bahraini Dinar</div>
+												<div class="text-muted-2 text-md text-uppercase">thb</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Brazilian Real</div>
+												<div class="text-muted-2 text-md text-uppercase">USD</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Bulgarian Lev</div>
+												<div class="text-muted-2 text-md text-uppercase">GBP</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Canadian Dollar</div>
+												<div class="text-muted-2 text-md text-uppercase">EUR</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Chilean Peso</div>
+												<div class="text-muted-2 text-md text-uppercase">Inr</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Colombian Peso</div>
+												<div class="text-muted-2 text-md text-uppercase">aud</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Danish Krone</div>
+												<div class="text-muted-2 text-md text-uppercase">thb</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Egyptian Pound</div>
+												<div class="text-muted-2 text-md text-uppercase">USD</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Hungarian Forint</div>
+												<div class="text-muted-2 text-md text-uppercase">GBP</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Japanese Yen</div>
+												<div class="text-muted-2 text-md text-uppercase">EUR</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Jordanian Dinar</div>
+												<div class="text-muted-2 text-md text-uppercase">Inr</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Kuwaiti Dinar</div>
+												<div class="text-muted-2 text-md text-uppercase">aud</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Malaysian Ringgit</div>
+												<div class="text-muted-2 text-md text-uppercase">thb</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCurrency" href="#">
+												<div class="text-dark text-md fw-medium">Singapore Dollar</div>
+												<div class="text-muted-2 text-md text-uppercase">thb</div>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
 
+						</div>
+					</div>
 				</div>
-			  </div>
 			</div>
-		  </div>
 		</div>
 
 
 		<!-- Choose Countries Modal -->
 		<div class="modal modal-lg fade" id="countryModal" tabindex="-1" aria-labelledby="countryModalLabel"
-		  aria-hidden="true">
-		  <div class="modal-dialog">
-			<div class="modal-content">
-			  <div class="modal-header">
-				<h4 class="modal-title fs-6" id="countryModalLabel">Select Your Country</h4>
-				<a href="#" class="text-muted fs-4" data-bs-dismiss="modal" aria-label="Close"><i
-					class="fa-solid fa-square-xmark"></i></a>
-			  </div>
-			  <div class="modal-body">
-				<div class="allCountrieslist">
+			aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title fs-6" id="countryModalLabel">Select Your Country</h4>
+						<a href="#" class="text-muted fs-4" data-bs-dismiss="modal" aria-label="Close"><i
+								class="fa-solid fa-square-xmark"></i></a>
+					</div>
+					<div class="modal-body">
+						<div class="allCountrieslist">
 
-				  <div class="suggestedCurrencylist-wrap mb-4">
-					<div class="d-inline-block mb-0 ps-3">
-					  <h5 class="fs-6 fw-bold">Suggested Countries For you</h5>
-					</div>
-					<div class="suggestedCurrencylists">
-					  <ul
-						class="row align-items-center justify-content-start row-cols-xl-4 row-cols-lg-3 row-cols-2 gy-2 gx-3 m-0 p-0">
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/united-states.png" class="img-fluid circle"
-								width="35" alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">United State Dollar</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/united-kingdom.png" class="img-fluid circle"
-								width="35" alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Pound Sterling</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry active" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/flag.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Indian Rupees</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/belgium.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Euro</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/brazil.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Australian Dollar</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/china.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Thai Baht</div>
-						  </a>
-						</li>
-					  </ul>
-					</div>
-				  </div>
+							<div class="suggestedCurrencylist-wrap mb-4">
+								<div class="d-inline-block mb-0 ps-3">
+									<h5 class="fs-6 fw-bold">Suggested Countries For you</h5>
+								</div>
+								<div class="suggestedCurrencylists">
+									<ul
+										class="row align-items-center justify-content-start row-cols-xl-4 row-cols-lg-3 row-cols-2 gy-2 gx-3 m-0 p-0">
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/united-states.png" class="img-fluid circle"
+														width="35" alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">United State Dollar</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/united-kingdom.png" class="img-fluid circle"
+														width="35" alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Pound Sterling</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry active" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/flag.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Indian Rupees</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/belgium.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Euro</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/brazil.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Australian Dollar</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/china.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Thai Baht</div>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
 
-				  <div class="suggestedCurrencylist-wrap">
-					<div class="d-inline-block mb-0 ps-3">
-					  <h5 class="fs-6 fw-bold">All Countries</h5>
-					</div>
-					<div class="suggestedCurrencylists">
-					  <ul
-						class="row align-items-center justify-content-start row-cols-xl-4 row-cols-lg-3 row-cols-2 gy-2 gx-3 m-0 p-0">
-						<li class="col">
-							<a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/united-states.png" class="img-fluid circle"
-								width="35" alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">United State Dollar</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/vietnam.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Property currency</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/turkey.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Argentine Peso</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/spain.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Azerbaijani Manat</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/japan.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Australian Dollar</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/flag.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Bahraini Dinar</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/portugal.png" class="img-fluid circle"
-								width="35" alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Brazilian Real</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/italy.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Bulgarian Lev</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/germany.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Canadian Dollar</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/france.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Chilean Peso</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/european.png" class="img-fluid circle"
-								width="35" alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Colombian Peso</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/china.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Danish Krone</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/brazil.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Egyptian Pound</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/belgium.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Hungarian Forint</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/turkey.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Japanese Yen</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/spain.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Jordanian Dinar</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/germany.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Kuwaiti Dinar</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/france.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Malaysian Ringgit</div>
-						  </a>
-						</li>
-						<li class="col">
-						  <a class="selectCountry" href="#">
-							<div class="d-inline-block"><img src="assets/img/flag/brazil.png" class="img-fluid circle" width="35"
-								alt=""></div>
-							<div class="text-dark text-md fw-medium ps-2">Singapore Dollar</div>
-						  </a>
-						</li>
-					  </ul>
-					</div>
-				  </div>
+							<div class="suggestedCurrencylist-wrap">
+								<div class="d-inline-block mb-0 ps-3">
+									<h5 class="fs-6 fw-bold">All Countries</h5>
+								</div>
+								<div class="suggestedCurrencylists">
+									<ul
+										class="row align-items-center justify-content-start row-cols-xl-4 row-cols-lg-3 row-cols-2 gy-2 gx-3 m-0 p-0">
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/united-states.png" class="img-fluid circle"
+														width="35" alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">United State Dollar</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/vietnam.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Property currency</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/turkey.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Argentine Peso</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/spain.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Azerbaijani Manat</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/japan.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Australian Dollar</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/flag.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Bahraini Dinar</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/portugal.png" class="img-fluid circle"
+														width="35" alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Brazilian Real</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/italy.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Bulgarian Lev</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/germany.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Canadian Dollar</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/france.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Chilean Peso</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/european.png" class="img-fluid circle"
+														width="35" alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Colombian Peso</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/china.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Danish Krone</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/brazil.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Egyptian Pound</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/belgium.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Hungarian Forint</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/turkey.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Japanese Yen</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/spain.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Jordanian Dinar</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/germany.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Kuwaiti Dinar</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/france.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Malaysian Ringgit</div>
+											</a>
+										</li>
+										<li class="col">
+											<a class="selectCountry" href="#">
+												<div class="d-inline-block"><img src="assets/img/flag/brazil.png" class="img-fluid circle" width="35"
+														alt=""></div>
+												<div class="text-dark text-md fw-medium ps-2">Singapore Dollar</div>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
 
+						</div>
+					</div>
 				</div>
-			  </div>
 			</div>
-		  </div>
 		</div>
 
 
@@ -2410,17 +1617,17 @@
 	<!-- All Jquery -->
 	<!-- ============================================================== -->
 	<script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/dropzone.min.js"></script>
-    <script src="assets/js/flatpickr.js"></script>
-    <script src="assets/js/flickity.pkgd.min.js"></script>
-    <script src="assets/js/lightbox.min.js"></script>
-    <script src="assets/js/rangeslider.js"></script>
-    <script src="assets/js/select2.min.js"></script>
-    <script src="assets/js/counterup.min.js"></script>
-    <script src="assets/js/prism.js"></script>
-	
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/dropzone.min.js"></script>
+	<script src="assets/js/flatpickr.js"></script>
+	<script src="assets/js/flickity.pkgd.min.js"></script>
+	<script src="assets/js/lightbox.min.js"></script>
+	<script src="assets/js/rangeslider.js"></script>
+	<script src="assets/js/select2.min.js"></script>
+	<script src="assets/js/counterup.min.js"></script>
+	<script src="assets/js/prism.js"></script>
+
 	<script src="assets/js/custom.js"></script>
 	<!-- ============================================================== -->
 	<!-- This page plugins -->
@@ -2430,4 +1637,5 @@
 
 
 <!-- Mirrored from shreethemes.net/geotrip-live/geotrip/flight-list-01.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jul 2024 16:08:38 GMT -->
+
 </html>
