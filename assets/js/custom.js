@@ -218,16 +218,28 @@
 
     $('.multiple-select').select2();
 
-    $(".leaving").select2({
-        placeholder: "Leaving From"
+    $(".departure_from").select2({
+        placeholder: "Departure From"
     });
 
-    $(".goingto").select2({
-        placeholder: "Going To"
+    $(".arrival").select2({
+        placeholder: "Arrival"
     });
 
-    $(".occupant").select2({
-        placeholder: "Occupant"
+    $(".adult").select2({
+        placeholder: "Adult"
+    });
+
+    $(".children").select2({
+        placeholder: "Children"
+    });
+
+    $(".infants").select2({
+        placeholder: "Infants"
+    });
+
+    $(".class").select2({
+        placeholder: "Class"
     });
 
     $(".pickup").select2({

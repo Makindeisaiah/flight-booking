@@ -96,8 +96,8 @@ include "./includes/actions.php";
 							<div class="d-flex align-items-center justify-content-between flex-wrap">
 							  <div class="flx-start mb-sm-0 mb-2">
 								<div class="form-check form-check-inline">
-								  <input class="form-check-input" type="radio" name="trip" id="return" value="option1" checked>
-								  <label class="form-check-label" for="return">Return</label>
+								  <input class="tab-pane" type="radio" name="trip" id="return" value="option1" checked>
+								  <label class="tab-pane show active" for="return">Return</label>
 								</div>
 								<div class="form-check form-check-inline">
 								  <input class="form-check-input" type="radio" name="trip" id="oneway" value="option2">
@@ -218,7 +218,7 @@ include "./includes/actions.php";
 
 						  </div>
 						</div>
-					  </div>
+					</div>
 				</div>
 				<!-- </row> -->
 

@@ -97,22 +97,16 @@ include "includes/actions.php";
 
 							<div class="tab-content">
 								<div class="tab-pane show active" name="one-way" id="one-way">
-									<form action="" method="POST">
+									<form action="one-way.php" method="GET">
 										<div class="row gx-lg-2 g-3">
-											<div class="col-xl-5 col-lg-5 col-md-12">
+											<div class="col-xl-4 col-lg-4 col-md-12">
 												<div class="row gy-3 gx-lg-2 gx-3">
 													<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 position-relative">
 														<div class="form-group hdd-arrow mb-0">
-															<select name="departure" class="leaving form-control fw-bold" required>
-																<option value="">Select</option>
-																<option value="ny">New York</option>
-																<option value="sd">San Diego</option>
-																<option value="sj">San Jose</option>
-																<option value="ph">Philadelphia</option>
-																<option value="nl">Nashville</option>
-																<option value="sf">San Francisco</option>
-																<option value="hu">Houston</option>
-																<option value="sa">San Antonio</option>
+															<select name="departure" class="departure_from form-control fw-bold" required>
+																<?php
+																include "includes/airport-list.php";
+																?>
 															</select>
 														</div>
 														<div class="btn-flip-icon mt-md-0">
@@ -121,42 +115,65 @@ include "includes/actions.php";
 													</div>
 													<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
 														<div class="form-groupp hdd-arrow mb-0">
-															<select name="arrival" class="goingto form-control fw-bold" required>
-																<option value="">Select</option>
-																<option value="lv">Las Vegas</option>
-																<option value="la">Los Angeles</option>
-																<option value="kc">Kansas City</option>
-																<option value="no">New Orleans</option>
-																<option value="kc">Jacksonville</option>
-																<option value="lb">Long Beach</option>
-																<option value="cl">Columbus</option>
-																<option value="cn">Canada</option>
+															<select name="arrival" class="arrival form-control fw-bold" required>
+																<?php
+																include "includes/airport-list.php";
+																?>
 															</select>
 														</div>
 													</div>
 												</div>
 											</div>
-											<div class="col-xl-5 col-lg-5 col-md-12">
+											<div class="col-xl-7 col-lg-7 col-md-12">
 												<div class="row gy-3 gx-lg-2 gx-3">
-													<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+													<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
 														<div class="form-group mb-0">
 															<input class="form-control fw-bold choosedate" name="departure_date" type="text" placeholder="Departure.." readonly="readonly" required>
 														</div>
 													</div>
-													<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+													<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
 														<div class="form-groupp hdd-arrow mb-0">
-															<select name="passengers" class="occupant form-control fw-bold" required>
+															<select name="passengers" class="adult form-control fw-bold" min="1" required>
 																<option value="">Select</option>
-																<option value="lv">01 Adult</option>
-																<option value="la">02 Adult</option>
-																<option value="kc">03 Adult</option>
-
+																<option value="lv">1</option>
+																<option value="la">2</option>
+																<option value="kc">3</option>
+															</select>
+														</div>
+													</div>
+													<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+														<div class="form-groupp hdd-arrow mb-0">
+															<select name="children" class="children form-control fw-bold" required>
+																<option value="">Select</option>
+																<option value="lv">0</option>
+																<option value="la">1</option>
+																<option value="kc">2</option>
+															</select>
+														</div>
+													</div>
+													<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+														<div class="form-groupp hdd-arrow mb-0">
+															<select name="infants" class="infants form-control fw-bold" required>
+																<option value="">Select</option>
+																<option value="lv">0</option>
+																<option value="la">1</option>
+																<option value="kc">2</option>
+															</select>
+														</div>
+													</div>
+													<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+														<div class="form-groupp hdd-arrow mb-0">
+															<select name="class" class="class form-control fw-bold" required>
+																<option value="">Select</option>
+																<option value="lv">Economy</option>
+																<option value="la">First Class</option>
+																<option value="kc">Business Class</option>
 															</select>
 														</div>
 													</div>
 												</div>
 											</div>
-											<div class="col-xl-2 col-lg-2 col-md-12">
+											<div class="col-xl-1 col-lg-1 col-md-12">
 												<div class="form-group mb-0">
 													<button name="submit" type="submit" class="btn btn-primary full-width fw-medium"><i class="fa-solid fa-magnifying-glass fs-5"></i></button>
 												</div>
@@ -169,22 +186,16 @@ include "includes/actions.php";
 
 
 								<div class="tab-pane" id="round-trip">
-									<form action="" method="POST">
+									<form action="round-trip.php" method="GET">
 										<div class="row gx-lg-2 g-3">
 											<div class="col-xl-4 col-lg-4 col-md-12">
 												<div class="row gy-3 gx-lg-2 gx-3">
 													<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 position-relative">
 														<div class="form-group hdd-arrow mb-0">
-															<select name="" class="leaving form-control fw-bold">
-																<option value="">Select</option>
-																<option value="ny">New York</option>
-																<option value="sd">San Diego</option>
-																<option value="sj">San Jose</option>
-																<option value="ph">Philadelphia</option>
-																<option value="nl">Nashville</option>
-																<option value="sf">San Francisco</option>
-																<option value="hu">Houston</option>
-																<option value="sa">San Antonio</option>
+															<select name="departure" class="departure_from form-control fw-bold">
+																<?php
+																include "includes/airport-list.php";
+																?>
 															</select>
 														</div>
 														<div class="btn-flip-icon mt-md-0">
@@ -193,51 +204,67 @@ include "includes/actions.php";
 													</div>
 													<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
 														<div class="form-groupp hdd-arrow mb-0">
-															<select name="" class="goingto form-control fw-bold">
-																<option value="">Select</option>
-																<option value="lv">Las Vegas</option>
-																<option value="la">Los Angeles</option>
-																<option value="kc">Kansas City</option>
-																<option value="no">New Orleans</option>
-																<option value="kc">Jacksonville</option>
-																<option value="lb">Long Beach</option>
-																<option value="cl">Columbus</option>
-																<option value="cn">Canada</option>
+															<select name="arrival" class="arrival form-control fw-bold">
+																<?php
+																include "includes/airport-list.php";
+																?>
 															</select>
 														</div>
 													</div>
 												</div>
 											</div>
-											<div class="col-xl-4 col-lg-4 col-md-12">
+											<div class="col-xl-3 col-lg-3 col-md-12">
 												<div class="row gy-3 gx-lg-2 gx-3">
 													<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
 														<div class="form-group mb-0">
-															<input name="" class="form-control fw-bold choosedate" type="text" placeholder="Departure.." readonly="readonly">
+															<input name="departure_date" class="form-control fw-bold choosedate" type="text" placeholder="Departure.." readonly="readonly">
 														</div>
 													</div>
 													<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
 														<div class="form-group mb-0">
-															<input name="" class="form-control fw-bold choosedate" type="text" placeholder="Return.." readonly="readonly">
+															<input name="adult" class="form-control fw-bold choosedate" type="text" placeholder="Return.." readonly="readonly">
 														</div>
 													</div>
 												</div>
 											</div>
-											<div class="col-xl-2 col-lg-2 col-md-12">
+											<div class="col-xl-1 col-lg-1 col-md-12">
 												<div class="form-groupp hdd-arrow mb-0">
-													<select name="" class="occupant form-control fw-bold">
+													<select name="passenger" class="adult form-control fw-bold">
 														<option value="">Select</option>
-														<option value="lv">01 Adult</option>
-														<option value="la">02 Adult</option>
-														<option value="kc">03 Adult</option>
-														<option value="no">04 Adult</option>
-														<option value="kc">05 Adult</option>
-														<option value="lb">06 Adult</option>
-														<option value="cl">07 Adult</option>
-														<option value="cn">08 Adult</option>
+														<option value="lv">1</option>
+														<option value="la">2</option>
 													</select>
 												</div>
 											</div>
-											<div class="col-xl-2 col-lg-2 col-md-12">
+											<div class="col-xl-1 col-lg-1 col-md-12">
+												<div class="form-groupp hdd-arrow mb-0">
+													<select name="children" class="children form-control fw-bold">
+														<option value="">Select</option>
+														<option value="lv">0</option>
+														<option value="la">1</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-xl-1 col-lg-1 col-md-12">
+												<div class="form-groupp hdd-arrow mb-0">
+													<select name="infants" class="infants form-control fw-bold">
+														<option value="">Select</option>
+														<option value="lv">0</option>
+														<option value="la">1</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-xl-1 col-lg-1 col-md-12">
+												<div class="form-groupp hdd-arrow mb-0">
+													<select name="class" class="class form-control fw-bold">
+														<option value="">Select</option>
+														<option value="lv">Economy</option>
+														<option value="la">First Class</option>
+														<option value="la">Business Class</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-xl-1 col-lg-1 col-md-12">
 												<div class="form-group mb-0">
 													<button name="submit" type="submit" class="btn btn-primary full-width fw-medium"><i class="fa-solid fa-magnifying-glass fs-5"></i></button>
 												</div>

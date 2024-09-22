@@ -4,6 +4,43 @@ include "includes/session.php";
 include "includes/actions.php";
 include "includes/db.php";
 
+// Database connection settings
+$host = 'localhost';
+$dbname = 'flight_booking';
+$username = 'root'; // Change this to your database username
+$password = '';     // Change this to your database password
+
+try {
+	// Create a new PDO instance
+	$pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	// Check if departure and arrival parameters are set
+	if (isset($_GET['departure']) && isset($_GET['arrival']) && isset($_GET['departure_date'])) {
+		$departure = $_GET['departure'];
+		$arrival = $_GET['arrival'];
+		$departure_date = $_GET['departure_date'];
+		// $departure_date = $_GET['departure_date'];
+
+		// Prepare the SQL query
+		$sql = "SELECT * FROM flight WHERE departure = :departure AND arrival = :arrival AND departure_date = :departure_date";
+		$stmt = $pdo->prepare($sql);
+		$stmt->bindParam(':departure', $departure, PDO::PARAM_STR);
+		$stmt->bindParam(':arrival', $arrival, PDO::PARAM_STR);
+		$stmt->bindParam(':departure_date', $departure_date, PDO::PARAM_STR);
+		$stmt->execute();
+
+		// Fetch results
+		$flight = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$count = count($flight);
+	} else {
+		// If no parameters are set, show an empty result set
+		$flight = [];
+	}
+} catch (PDOException $e) {
+	echo 'Database error: ' . $e->getMessage();
+	exit;
+}
 
 
 ?>
@@ -125,50 +162,55 @@ include "includes/db.php";
 					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
 						<div class="search-wrap position-relative">
 							<div class="row align-items-end gy-3 gx-md-3 gx-sm-2">
-
-								<div class="col-xl-8 col-lg-7 col-md-12">
+								<div class="col-xl-7 col-lg-7 col-md-12">
 									<div class="row gy-3 gx-md-3 gx-sm-2">
-										<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 position-relative">
+										<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 position-relative">
 											<div class="form-group hdd-arrow mb-0">
 												<label class="text-light text-uppercase opacity-75">Leaving From</label>
-												<select class="leaving form-control fw-bold">
-													<option value="">Select</option>
-													<option value="ny">New York</option>
-													<option value="sd">San Diego</option>
-													<option value="sj">San Jose</option>
-													<option value="ph">Philadelphia</option>
-													<option value="nl">Nashville</option>
-													<option value="sf">San Francisco</option>
-													<option value="hu">Houston</option>
-													<option value="sa">San Antonio</option>
+												<select class="departure_from form-control fw-bold">
+												<?php include "includes/airport-list.php"; ?>
 												</select>
 											</div>
 										</div>
-										<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+										<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
 											<div class="form-group hdd-arrow mb-0">
 												<label class="text-light text-uppercase opacity-75">Going To</label>
-												<select class="goingto form-control fw-bold">
-													<option value="">Select</option>
-													<option value="ny">New York</option>
-													<option value="sd">San Diego</option>
-													<option value="sj">San Jose</option>
-													<option value="ph">Philadelphia</option>
-													<option value="nl">Nashville</option>
-													<option value="sf">San Francisco</option>
-													<option value="hu">Houston</option>
-													<option value="sa">San Antonio</option>
+												<select class="arrival form-control fw-bold">
+												<?php include "includes/airport-list.php"; ?>
 												</select>
+											</div>
+										</div>
+										<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+											<div class="form-group hdd-arrow mb-0">
+												<label class="text-light text-uppercase opacity-75">Journey Date</label>
+												<input type="text" class="form-control fw-bold choosedate" placeholder="Check-In"
+													id="checkin" readonly="readonly">
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="col-xl-4 col-lg-5 col-md-12">
+								<div class="col-xl-5 col-lg-5 col-md-12">
 									<div class="row align-items-end gy-3 gx-md-3 gx-sm-2">
-										<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+										<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
 											<div class="form-group mb-0">
-												<label class="text-light text-uppercase opacity-75">Journey Date</label>
-												<input type="text" class="form-control fw-bold" placeholder="Check-In & Check-Out"
-													id="checkinout" readonly="readonly">
+												<label class="text-light text-uppercase opacity-75">Passenger</label>
+												<select class="adult form-control fw-bold" min="1">
+													<option value="">Select</option>
+													<option value="lv">1</option>
+													<option value="la">2</option>
+													<option value="kc">3</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+											<div class="form-group mb-0">
+												<label class="text-light text-uppercase opacity-75">Class</label>
+												<select class="class form-control fw-bold">
+													<option value="">Select</option>
+													<option value="ee">Economy</option>
+													<option value="fc">First Class</option>
+													<option value="bc">Business Class</option>
+												</select>
 											</div>
 										</div>
 										<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
@@ -192,631 +234,195 @@ include "includes/db.php";
 
 
 		<!-- ============================ All Flits Search Lists Start ================================== -->
+
 		<section class="gray-simple">
 			<div class="container">
+
 				<div class="row justify-content-between gy-4 gx-xl-4 gx-lg-3 gx-md-3 gx-4">
 
-					<!-- Sidebar Filter Options -->
-					<div class="col-xl-3 col-lg-4 col-md-12">
-						<div class="filter-searchBar bg-white rounded-3">
-							<!-- <div class="filter-searchBar-head border-bottom">
-								<div class="searchBar-headerBody d-flex align-items-start justify-content-between px-3 py-3">
-									<div class="searchBar-headerfirst">
-										<h6 class="fw-bold fs-5 m-0">Filters</h6>
-										<p class="text-md text-muted m-0">Showing 180 Flights</p>
-									</div>
-									<div class="searchBar-headerlast text-end">
-										<a href="#" class="text-md fw-medium text-primary active">Clear All</a>
-									</div>
-								</div>
-							</div> -->
-
-							<div class="filter-searchBar-body">
-
-								<!-- Departure & Return -->
-								<!-- <div class="searchBar-single px-3 py-3 border-bottom">
-									<div class="searchBar-single-title d-flex mb-3">
-										<h6 class="sidebar-subTitle fs-6 fw-medium m-0">Departure</h6>
-									</div>
-									<div class="searchBar-single-wrap mb-4">
-										<ul class="row align-items-center justify-content-between p-0 gx-3 gy-2">
-											<li class="col-6">
-												<input type="checkbox" class="btn-check" id="before6am">
-												<label class="btn btn-sm btn-secondary rounded-1 fw-medium px-4 full-width"
-													for="before6am">Before 6AM</label>
-											</li>
-											<li class="col-6">
-												<input type="checkbox" class="btn-check" id="6am12pm">
-												<label class="btn btn-sm btn-secondary rounded-1 fw-medium px-4 full-width" for="6am12pm">6AM -
-													12PM</label>
-											</li>
-											<li class="col-6">
-												<input type="checkbox" class="btn-check" id="12pm6pm">
-												<label class="btn btn-sm btn-secondary rounded-1 fw-medium px-4 full-width" for="12pm6pm">12PM -
-													6PM</label>
-											</li>
-											<li class="col-6">
-												<input type="checkbox" class="btn-check" id="after6pm">
-												<label class="btn btn-sm btn-secondary rounded-1 fw-medium px-4 full-width" for="after6pm">After
-													6PM</label>
-											</li>
-										</ul>
-									</div>
-
-									<div class="searchBar-single-title d-flex mb-3">
-										<h6 class="sidebar-subTitle fs-6 fw-medium m-0">Return</h6>
-									</div>
-									<div class="searchBar-single-wrap">
-										<ul class="row align-items-center justify-content-between p-0 gx-3 gy-2">
-											<li class="col-6">
-												<input type="checkbox" class="btn-check" id="before6am1">
-												<label class="btn btn-sm btn-secondary rounded-1 fw-medium px-4 full-width"
-													for="before6am1">Before 6AM</label>
-											</li>
-											<li class="col-6">
-												<input type="checkbox" class="btn-check" id="6am12pm1">
-												<label class="btn btn-sm btn-secondary rounded-1 fw-medium px-4 full-width" for="6am12pm1">6AM -
-													12PM</label>
-											</li>
-											<li class="col-6">
-												<input type="checkbox" class="btn-check" id="12pm6pm1">
-												<label class="btn btn-sm btn-secondary rounded-1 fw-medium px-4 full-width" for="12pm6pm1">12PM
-													- 6PM</label>
-											</li>
-											<li class="col-6">
-												<input type="checkbox" class="btn-check" id="after6pm1">
-												<label class="btn btn-sm btn-secondary rounded-1 fw-medium px-4 full-width"
-													for="after6pm1">After 6PM</label>
-											</li>
-										</ul>
-									</div>
-
-								</div> -->
-
-								<!-- Onward Stops -->
-								<!-- <div class="searchBar-single px-3 py-3 border-bottom">
-									<div class="searchBar-single-title d-flex mb-3">
-										<h6 class="sidebar-subTitle fs-6 fw-medium m-0">Onward Stops</h6>
-									</div>
-									<div class="searchBar-single-wrap">
-										<ul class="row align-items-center justify-content-between p-0 gx-3 gy-2">
-											<li class="col-6">
-												<input type="checkbox" class="btn-check" id="direct">
-												<label class="btn btn-sm btn-secondary rounded-1 fw-medium px-4 full-width"
-													for="direct">Direct</label>
-											</li>
-											<li class="col-6">
-												<input type="checkbox" class="btn-check" id="1stop">
-												<label class="btn btn-sm btn-secondary rounded-1 fw-medium px-4 full-width" for="1stop">1
-													Stop</label>
-											</li>
-											<li class="col-6">
-												<input type="checkbox" class="btn-check" id="2stop">
-												<label class="btn btn-sm btn-secondary rounded-1 fw-medium px-4 full-width" for="2stop">2+
-													Stop</label>
-											</li>
-										</ul>
-									</div>
-
-									<div class="searchBar-single-title d-flex mb-3">
-										<h6 class="sidebar-subTitle fs-6 fw-medium m-0">Return Stops</h6>
-									</div>
-									<div class="searchBar-single-wrap">
-										<ul class="row align-items-center justify-content-between p-0 gx-3 gy-2">
-											<li class="col-6">
-												<input type="checkbox" class="btn-check" id="direct1">
-												<label class="btn btn-sm btn-secondary rounded-1 fw-medium px-4 full-width"
-													for="direct1">Direct</label>
-											</li>
-											<li class="col-6">
-												<input type="checkbox" class="btn-check" id="1stop1">
-												<label class="btn btn-sm btn-secondary rounded-1 fw-medium px-4 full-width" for="1stop1">1
-													Stop</label>
-											</li>
-											<li class="col-6">
-												<input type="checkbox" class="btn-check" id="2stop1">
-												<label class="btn btn-sm btn-secondary rounded-1 fw-medium px-4 full-width" for="2stop1">2+
-													Stop</label>
-											</li>
-										</ul>
-									</div>
-
-								</div> -->
-
-								<!-- Pricing -->
-								<!-- <div class="searchBar-single px-3 py-3 border-bottom">
-									<div class="searchBar-single-title d-flex mb-3">
-										<h6 class="sidebar-subTitle fs-6 fw-medium m-0">Pricing Range in US$</h6>
-									</div>
-									<div class="searchBar-single-wrap">
-										<input type="text" class="js-range-slider" name="my_range" value="" data-skin="round"
-											data-type="double" data-min="0" data-max="1000" data-grid="false">
-									</div>
-								</div> -->
-
-								<!-- Facilities -->
-								<!-- <div class="searchBar-single px-3 py-3 border-bottom">
-									<div class="searchBar-single-title d-flex mb-3">
-										<h6 class="sidebar-subTitle fs-6 fw-medium m-0">Facilities</h6>
-									</div>
-									<div class="searchBar-single-wrap">
-										<ul class="row align-items-center justify-content-between p-0 gx-3 gy-2">
-											<li class="col-12">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="baggage">
-													<label class="form-check-label" for="baggage">Baggage</label>
-												</div>
-											</li>
-											<li class="col-12">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="inflightmeal">
-													<label class="form-check-label" for="inflightmeal">In-flight Meal</label>
-												</div>
-											</li>
-											<li class="col-12">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="inflightenter">
-													<label class="form-check-label" for="inflightenter">In-flight Entertainment</label>
-												</div>
-											</li>
-											<li class="col-12">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="flswifi">
-													<label class="form-check-label" for="flswifi">WiFi</label>
-												</div>
-											</li>
-											<li class="col-12">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="flusbport">
-													<label class="form-check-label" for="flusbport">Power/USB Port</label>
-												</div>
-											</li>
-										</ul>
-									</div>
-
-								</div> -->
-
-								<!-- Popular Flights -->
-								<!-- <div class="searchBar-single px-3 py-3 border-bottom">
-									<div class="searchBar-single-title d-flex align-items-center justify-content-between mb-3">
-										<h6 class="sidebar-subTitle fs-6 fw-medium m-0">Preferred Airlines</h6>
-										<a href="#" class="text-md fw-medium text-muted active">Reset</a>
-									</div>
-									<div class="searchBar-single-wrap">
-										<ul class="row align-items-center justify-content-between p-0 gx-3 gy-2">
-											<li class="col-12">
-												<div class="form-check lg">
-													<div class="frm-slicing d-flex align-items-center">
-														<div class="frm-slicing-first">
-															<input class="form-check-input" type="checkbox" id="baggage8">
-															<label class="form-check-label" for="baggage8"></label>
-														</div>
-														<div
-															class="frm-slicing-end d-flex align-items-center justify-content-between full-width ps-1">
-															<div class="frms-flex d-flex align-items-center">
-																<div class="frm-slicing-img"><img src="assets/img/air-1.png" class="img-fluid" width="25"
-																		alt=""></div>
-																<div class="frm-slicing-title ps-2"><span class="text-muted-2">Air India</span></div>
-															</div>
-															<div class="text-end"><span class="text-md text-muted-2 opacity-75">$390.00</span></div>
-														</div>
-													</div>
-
-												</div>
-											</li>
-											<li class="col-12">
-												<div class="form-check lg">
-													<div class="frm-slicing d-flex align-items-center">
-														<div class="frm-slicing-first">
-															<input class="form-check-input" type="checkbox" id="baggage1">
-															<label class="form-check-label" for="baggage1"></label>
-														</div>
-														<div
-															class="frm-slicing-end d-flex align-items-center justify-content-between full-width ps-1">
-															<div class="frms-flex d-flex align-items-center">
-																<div class="frm-slicing-img"><img src="assets/img/air-2.png" class="img-fluid" width="25"
-																		alt=""></div>
-																<div class="frm-slicing-title ps-2"><span class="text-muted-2">Jal Airlines</span></div>
-															</div>
-															<div class="text-end"><span class="text-md text-muted-2 opacity-75">$310.00</span></div>
-														</div>
-													</div>
-
-												</div>
-											</li>
-											<li class="col-12">
-												<div class="form-check lg">
-													<div class="frm-slicing d-flex align-items-center">
-														<div class="frm-slicing-first">
-															<input class="form-check-input" type="checkbox" id="baggage2">
-															<label class="form-check-label" for="baggage2"></label>
-														</div>
-														<div
-															class="frm-slicing-end d-flex align-items-center justify-content-between full-width ps-1">
-															<div class="frms-flex d-flex align-items-center">
-																<div class="frm-slicing-img"><img src="assets/img/air-3.png" class="img-fluid" width="25"
-																		alt=""></div>
-																<div class="frm-slicing-title ps-2"><span class="text-muted-2">Indigo</span></div>
-															</div>
-															<div class="text-end"><span class="text-md text-muted-2 opacity-75">$390.00</span></div>
-														</div>
-													</div>
-
-												</div>
-											</li>
-											<li class="col-12">
-												<div class="form-check lg">
-													<div class="frm-slicing d-flex align-items-center">
-														<div class="frm-slicing-first">
-															<input class="form-check-input" type="checkbox" id="baggage3">
-															<label class="form-check-label" for="baggage3"></label>
-														</div>
-														<div
-															class="frm-slicing-end d-flex align-items-center justify-content-between full-width ps-1">
-															<div class="frms-flex d-flex align-items-center">
-																<div class="frm-slicing-img"><img src="assets/img/air-4.png" class="img-fluid" width="25"
-																		alt=""></div>
-																<div class="frm-slicing-title ps-2"><span class="text-muted-2">Air Asia</span></div>
-															</div>
-															<div class="text-end"><span class="text-md text-muted-2 opacity-75">$410.00</span></div>
-														</div>
-													</div>
-
-												</div>
-											</li>
-											<li class="col-12">
-												<div class="form-check lg">
-													<div class="frm-slicing d-flex align-items-center">
-														<div class="frm-slicing-first">
-															<input class="form-check-input" type="checkbox" id="baggage4">
-															<label class="form-check-label" for="baggage4"></label>
-														</div>
-														<div
-															class="frm-slicing-end d-flex align-items-center justify-content-between full-width ps-1">
-															<div class="frms-flex d-flex align-items-center">
-																<div class="frm-slicing-img"><img src="assets/img/air-5.png" class="img-fluid" width="25"
-																		alt=""></div>
-																<div class="frm-slicing-title ps-2"><span class="text-muted-2">Vistara</span></div>
-															</div>
-															<div class="text-end"><span class="text-md text-muted-2 opacity-75">$370.00</span></div>
-														</div>
-													</div>
-
-												</div>
-											</li>
-										</ul>
-									</div>
-
-								</div> -->
-
-							</div>
-						</div>
-					</div>
-
 					<!-- All Flight Lists -->
+
 					<div class="col-xl-12 col-lg-12 col-md-12">
 
-						<div class="row align-items-center justify-content-between">
-							<div class="col-xl-4 col-lg-4 col-md-4">
-								<h5 class="fw-bold fs-6 mb-lg-0 mb-3">Showing 280 Search Results</h5>
-							</div>
-							<div class="col-xl-8 col-lg-8 col-md-12">
-								<div class="d-flex align-items-center justify-content-start justify-content-lg-end flex-wrap">
-									<div class="flsx-first me-2">
-										<div class="bg-white rounded py-2 px-3">
-											<div class="form-check form-switch">
-												<input class="form-check-input" type="checkbox" role="switch" id="mapoption">
-												<label class="form-check-label ms-1" for="mapoption">Map</label>
+						<?php if (count($flight) > 0): ?>
+							<div class="row align-items-center justify-content-between">
+								<div class="col-xl-4 col-lg-4 col-md-4">
+									<h5 class="fw-bold fs-6 mb-lg-0 mb-3">Showing <?php echo $count; ?> Search Results</h5>
+								</div>
+								<div class="col-xl-8 col-lg-8 col-md-12">
+									<div class="d-flex align-items-center justify-content-start justify-content-lg-end flex-wrap">
+										<div class="flsx-first me-2">
+											<div class="bg-white rounded py-2 px-3">
+												<div class="form-check form-switch">
+													<input class="form-check-input" type="checkbox" role="switch" id="mapoption">
+													<label class="form-check-label ms-1" for="mapoption">Map</label>
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="flsx-first mt-sm-0 mt-2">
-										<ul class="nav nav-pills nav-fill p-1 small lights blukker bg-primary rounded-3 shadow-sm"
-											id="filtersblocks" role="tablist">
-											<li class="nav-item" role="presentation">
-												<button class="nav-link active rounded-3" id="trending" data-bs-toggle="tab" type="button"
-													role="tab" aria-selected="true">Our Trending</button>
-											</li>
-											<li class="nav-item" role="presentation">
-												<button class="nav-link rounded-3" id="mostpopular" data-bs-toggle="tab" type="button"
-													role="tab" aria-selected="false">Most Popular</button>
-											</li>
-											<li class="nav-item" role="presentation">
-												<button class="nav-link rounded-3" id="lowprice" data-bs-toggle="tab" type="button" role="tab"
-													aria-selected="false">Lowest Price</button>
-											</li>
-										</ul>
+										<div class="flsx-first mt-sm-0 mt-2">
+											<ul class="nav nav-pills nav-fill p-1 small lights blukker bg-primary rounded-3 shadow-sm"
+												id="filtersblocks" role="tablist">
+												<li class="nav-item" role="presentation">
+													<button class="nav-link active rounded-3" id="trending" data-bs-toggle="tab" type="button"
+														role="tab" aria-selected="true">Our Trending</button>
+												</li>
+												<li class="nav-item" role="presentation">
+													<button class="nav-link rounded-3" id="mostpopular" data-bs-toggle="tab" type="button"
+														role="tab" aria-selected="false">Most Popular</button>
+												</li>
+												<li class="nav-item" role="presentation">
+													<button class="nav-link rounded-3" id="lowprice" data-bs-toggle="tab" type="button" role="tab"
+														aria-selected="false">Lowest Price</button>
+												</li>
+											</ul>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
 
-						<div class="row align-items-center g-4 mt-2">
-
-							<!-- Single Flight -->
-
-							
-
-							<div class="col-xl-12 col-lg12 col-md-12">
-								<div class="flights-accordion">
-									<div class="flights-list-item bg-white rounded-3 p-3">
-										<div class="row gy-4 align-items-center justify-content-between">
-
-											<div class="col">
-												<div class="row">
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="d-flex align-items-center mb-2">
-															<span class="label bg-light-primary text-primary me-2">Departure</span>
-															<span class="text-muted text-sm">26 Jun 2023</span>
-														</div>
-													</div>
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="row gx-lg-5 gx-3 gy-4 align-items-center">
-
-															<div class="col-sm-auto">
-																<div class="d-flex align-items-center justify-content-start">
-																	<div class="d-start fl-pic">
-																		<img class="img-fluid" src="assets/img/air-1.png" width="45" alt="image">
-																	</div>
-																	<div class="d-end fl-title ps-2">
-																		<div class="text-dark fw-medium">Qutar Airways</div>
-																		<div class="text-sm text-muted">First Class</div>
-																	</div>
+							<div class="row align-items-center g-4 mt-2">
+								<!-- Single Flight -->
+								<?php foreach ($flight as $flight): ?>
+									<div class="col-xl-12 col-lg12 col-md-12">
+										<div class="flights-accordion">
+											<div class="flights-list-item bg-white rounded-3 p-3">
+												<div class="row gy-4 align-items-center justify-content-between">
+													<div class="col">
+														<div class="row">
+															<div class="col-xl-12 col-lg-12 col-md-12">
+																<div class="d-flex align-items-center mb-2">
+																	<span class="label bg-light-primary text-primary me-2">Departure</span>
+																	<span class="text-muted text-sm"><?php echo htmlspecialchars($flight['departure_date']); ?></span>
 																</div>
 															</div>
+															<div class="col-xl-12 col-lg-12 col-md-12">
+																<div class="row gx-lg-5 gx-3 gy-4 align-items-center">
 
-															<div class="col">
-																<div class="row gx-3 align-items-center">
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">07:40</div>
-																		<div class="text-muted text-sm fw-medium">DOH</div>
-																	</div>
-
-																	<div class="col text-center">
-																		<div class="flightLine departure">
-																			<div></div>
-																			<div></div>
+																	<div class="col-sm-auto">
+																		<div class="d-flex align-items-center justify-content-start">
+																			<div class="d-start fl-pic">
+																				<img class="img-fluid" src="assets/img/air-1.png" width="45" alt="image">
+																			</div>
+																			<div class="d-end fl-title ps-2">
+																				<div class="text-dark fw-medium"><?php echo htmlspecialchars($flight['airline']); ?></div>
+																				<div class="text-sm text-muted">First Class</div>
+																			</div>
 																		</div>
-																		<div class="text-muted text-sm fw-medium mt-3">Direct</div>
 																	</div>
 
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">12:20</div>
-																		<div class="text-muted text-sm fw-medium">DEL</div>
+																	<div class="col">
+																		<div class="row gx-3 align-items-center">
+																			<div class="col-auto">
+																				<div class="text-dark fw-bold"><?php echo htmlspecialchars($flight['departure_time']); ?></div>
+																				<div class="text-muted text-sm fw-medium"><?php echo htmlspecialchars($flight['departure']); ?></div>
+																			</div>
+
+																			<div class="col text-center">
+																				<div class="flightLine departure">
+																					<div></div>
+																					<div></div>
+																				</div>
+																				<div class="text-muted text-sm fw-medium mt-3">Direct</div>
+																			</div>
+
+																			<div class="col-auto">
+																				<div class="text-dark fw-bold"><?php echo htmlspecialchars($flight['arrival_time']); ?></div>
+																				<div class="text-muted text-sm fw-medium"><?php echo htmlspecialchars($flight['arrival']); ?></div>
+																			</div>
+																		</div>
+																	</div>
+
+																	<div class="col-md-auto">
+																		<div class="text-dark fw-medium"><?php echo htmlspecialchars($flight['eta']); ?></div>
+																		<div class="text-muted text-sm fw-medium">2 Stop</div>
 																	</div>
 																</div>
 															</div>
+														</div>
 
-															<div class="col-md-auto">
-																<div class="text-dark fw-medium">4H 40M</div>
-																<div class="text-muted text-sm fw-medium">2 Stop</div>
+
+													</div>
+
+													<div class="col-md-auto">
+														<div class="d-flex items-center h-100">
+															<div class="d-lg-block d-none border br-dashed me-4"></div>
+															<div>
+																<div class="d-flex align-items-center justify-content-md-end mb-3">
+																	<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
+																		data-bs-placement="top" data-bs-title="Free WiFi"><i
+																			class="fa-solid fa-wifi"></i></span>
+																	<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
+																		data-bs-placement="top" data-bs-title="Food Available"><i
+																			class="fa-solid fa-utensils"></i></span>
+																	<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
+																		data-bs-placement="top" data-bs-title="One Cup Tea"><i
+																			class="fa-solid fa-mug-saucer"></i></span>
+																	<span class="square--20 rounded text-xs text-muted border" data-bs-toggle="tooltip"
+																		data-bs-placement="top" data-bs-title="Pet Allow"><i class="fa-solid fa-dog"></i></span>
+																</div>
+																<div class="text-start text-md-end">
+																	<span class="label bg-light-success text-success me-1">15% Off</span>
+																	<div class="text-dark fs-3 fw-bold lh-base">US$<?php echo htmlspecialchars($flight['price']); ?></div>
+																	<div class="text-muted text-sm mb-2">Refundable</div>
+																</div>
+
+																<div class="flight-button-wrap">
+																	<button class="btn btn-primary btn-md fw-medium full-width" data-bs-toggle="modal"
+																		data-bs-target="#bookflight">
+																		Select Flight<i class="fa-solid fa-arrow-trend-up ms-2"></i>
+																	</button>
+																</div>
 															</div>
 														</div>
 													</div>
-												</div>
 
+
+												</div>
 
 											</div>
 
-											<div class="col-md-auto">
-												<div class="d-flex items-center h-100">
-													<div class="d-lg-block d-none border br-dashed me-4"></div>
-													<div>
-														<div class="d-flex align-items-center justify-content-md-end mb-3">
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Free WiFi"><i
-																	class="fa-solid fa-wifi"></i></span>
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Food Available"><i
-																	class="fa-solid fa-utensils"></i></span>
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="One Cup Tea"><i
-																	class="fa-solid fa-mug-saucer"></i></span>
-															<span class="square--20 rounded text-xs text-muted border" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Pet Allow"><i class="fa-solid fa-dog"></i></span>
-														</div>
-														<div class="text-start text-md-end">
-															<span class="label bg-light-success text-success me-1">15% Off</span>
-															<div class="text-dark fs-3 fw-bold lh-base">US$934</div>
-															<div class="text-muted text-sm mb-2">Refundable</div>
-														</div>
-
-														<div class="flight-button-wrap">
-															<button class="btn btn-primary btn-md fw-medium full-width" data-bs-toggle="modal"
-																data-bs-target="#bookflight">
-																Select Flight<i class="fa-solid fa-arrow-trend-up ms-2"></i>
-															</button>
-														</div>
-													</div>
-												</div>
-											</div>
 										</div>
 									</div>
-								</div>
-							</div>
-
-
-							<!--Round-Trip Flight -->
-							<!-- <div class="col-xl-12 col-lg12 col-md-12">
-								<div class="flights-accordion">
-									<div class="flights-list-item bg-white rounded-3 p-3">
-										<div class="row gy-4 align-items-center justify-content-between">
-                                  
+								<?php endforeach; ?>
 								
-											<div class="col">
-												<div class="row">
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="d-flex align-items-center mb-2">
-															<span class="label bg-light-primary text-primary me-2">Departure</span>
-															<span class="text-muted text-sm">26 Jun 2023</span>
-														</div>
-													</div>
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="row gx-lg-5 gx-3 gy-4 align-items-center">
 
-															<div class="col-sm-auto">
-																<div class="d-flex align-items-center justify-content-start">
-																	<div class="d-start fl-pic">
-																		<img class="img-fluid" src="assets/img/air-1.png" width="45" alt="image">
-																	</div>
-																	<div class="d-end fl-title ps-2">
-																		<div class="text-dark fw-medium">Qutar Airways</div>
-																		<div class="text-sm text-muted">First Class</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col">
-																<div class="row gx-3 align-items-center">
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">07:40</div>
-																		<div class="text-muted text-sm fw-medium">DOH</div>
-																	</div>
-
-																	<div class="col text-center">
-																		<div class="flightLine departure">
-																			<div></div>
-																			<div></div>
-																		</div>
-																		<div class="text-muted text-sm fw-medium mt-3">Direct</div>
-																	</div>
-
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">12:20</div>
-																		<div class="text-muted text-sm fw-medium">DEL</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col-md-auto">
-																<div class="text-dark fw-medium">4H 40M</div>
-																<div class="text-muted text-sm fw-medium">2 Stop</div>
-															</div>
-														</div>
-													</div>
-												</div>
-
-												<div class="row mt-4">
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="d-flex align-items-center mb-2">
-															<span class="label bg-light-success text-success me-2">Return</span>
-															<span class="text-muted text-sm">26 Jun 2023</span>
-														</div>
-													</div>
-
-													<div class="col-xl-12 col-lg-12 col-md-12">
-														<div class="row gx-lg-5 gx-3 gy-4 align-items-center">
-															<div class="col-sm-auto">
-																<div class="d-flex align-items-center justify-content-start">
-																	<div class="d-start fl-pic">
-																		<img class="img-fluid" src="assets/img/air-3.png" width="45" alt="image">
-																	</div>
-																	<div class="d-end fl-title ps-2">
-																		<div class="text-dark fw-medium">Qutar Airways</div>
-																		<div class="text-sm text-muted">Business</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col">
-																<div class="row gx-3 align-items-center">
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">14:10</div>
-																		<div class="text-muted text-sm fw-medium">DEL</div>
-																	</div>
-
-																	<div class="col text-center">
-																		<div class="flightLine return">
-																			<div></div>
-																			<div></div>
-																		</div>
-																		<div class="text-muted text-sm fw-medium mt-3">Direct</div>
-																	</div>
-
-																	<div class="col-auto">
-																		<div class="text-dark fw-bold">19:30</div>
-																		<div class="text-muted text-sm fw-medium">DOH</div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="col-md-auto">
-																<div class="text-dark fw-medium">5H 30M</div>
-																<div class="text-muted text-sm fw-medium">2 Stop</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-md-auto">
-												<div class="d-flex items-center h-100">
-													<div class="d-lg-block d-none border br-dashed me-4"></div>
-													<div>
-														<div class="d-flex align-items-center justify-content-md-end mb-3">
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Free WiFi"><i
-																	class="fa-solid fa-wifi"></i></span>
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Food Available"><i
-																	class="fa-solid fa-utensils"></i></span>
-															<span class="square--20 rounded text-xs text-muted border me-2" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="One Cup Tea"><i
-																	class="fa-solid fa-mug-saucer"></i></span>
-															<span class="square--20 rounded text-xs text-muted border" data-bs-toggle="tooltip"
-																data-bs-placement="top" data-bs-title="Pet Allow"><i class="fa-solid fa-dog"></i></span>
-														</div>
-														<div class="text-start text-md-end">
-															<span class="label bg-light-success text-success me-1">15% Off</span>
-															<div class="text-dark fs-3 fw-bold lh-base">US$934</div>
-															<div class="text-muted text-sm mb-2">Refundable</div>
-														</div>
-
-														<div class="flight-button-wrap">
-															<button class="btn btn-primary btn-md fw-medium full-width" data-bs-toggle="modal"
-																data-bs-target="#bookflight">
-																Select Flight<i class="fa-solid fa-arrow-trend-up ms-2"></i>
-															</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										
-										</div>
+								<div class="col-xl-12 col-lg-12 col-12">
+									<div class="pags card py-2 px-5">
+										<nav aria-label="Page navigation example">
+											<ul class="pagination m-0 p-0">
+												<li class="page-item">
+													<a class="page-link" href="#" aria-label="Previous">
+														<span aria-hidden="true"><i class="fa-solid fa-arrow-left-long"></i></span>
+													</a>
+												</li>
+												<li class="page-item active"><a class="page-link" href="#">1</a></li>
+												<li class="page-item"><a class="page-link" href="#">2</a></li>
+												<li class="page-item"><a class="page-link" href="#">3</a></li>
+												<li class="page-item">
+													<a class="page-link" href="#" aria-label="Next">
+														<span aria-hidden="true"><i class="fa-solid fa-arrow-right-long"></i></span>
+													</a>
+												</li>
+											</ul>
+										</nav>
 									</div>
 								</div>
-							</div> -->
 
 
-
-							<div class="col-xl-12 col-lg-12 col-12">
-								<div class="pags card py-2 px-5">
-									<nav aria-label="Page navigation example">
-										<ul class="pagination m-0 p-0">
-											<li class="page-item">
-												<a class="page-link" href="#" aria-label="Previous">
-													<span aria-hidden="true"><i class="fa-solid fa-arrow-left-long"></i></span>
-												</a>
-											</li>
-											<li class="page-item active"><a class="page-link" href="#">1</a></li>
-											<li class="page-item"><a class="page-link" href="#">2</a></li>
-											<li class="page-item"><a class="page-link" href="#">3</a></li>
-											<li class="page-item">
-												<a class="page-link" href="#" aria-label="Next">
-													<span aria-hidden="true"><i class="fa-solid fa-arrow-right-long"></i></span>
-												</a>
-											</li>
-										</ul>
-									</nav>
-								</div>
 							</div>
-
-						</div>
+						<?php else: ?>
+							<p>No flights found for the specified departure and arrival.</p>
+						<?php endif; ?>
 					</div>
 
+
+
+
 				</div>
+
 			</div>
 		</section>
+
 		<!-- ============================ All Flits Search Lists End ================================== -->
 
 
