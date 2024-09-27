@@ -135,39 +135,41 @@ include "includes/actions.php";
 														<div class="form-groupp hdd-arrow mb-0">
 															<select name="passengers" class="adult form-control fw-bold" min="1" required>
 																<option value="">Select</option>
-																<option value="lv">1</option>
-																<option value="la">2</option>
-																<option value="kc">3</option>
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
 															</select>
 														</div>
 													</div>
 													<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
 														<div class="form-groupp hdd-arrow mb-0">
-															<select name="children" class="children form-control fw-bold" required>
+															<select name="children" class="children form-control fw-bold" min="0" required>
 																<option value="">Select</option>
-																<option value="lv">0</option>
-																<option value="la">1</option>
-																<option value="kc">2</option>
+																<option value="0">0</option>
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
 															</select>
 														</div>
 													</div>
 													<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
 														<div class="form-groupp hdd-arrow mb-0">
-															<select name="infants" class="infants form-control fw-bold" required>
+															<select name="infants" class="infants form-control fw-bold">
 																<option value="">Select</option>
-																<option value="lv">0</option>
-																<option value="la">1</option>
-																<option value="kc">2</option>
+																<option value="0">0</option>
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
 															</select>
 														</div>
 													</div>
 													<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
 														<div class="form-groupp hdd-arrow mb-0">
-															<select name="class" class="class form-control fw-bold" required>
+															<select name="class" class="class form-control fw-bold" >
 																<option value="">Select</option>
-																<option value="lv">Economy</option>
-																<option value="la">First Class</option>
-																<option value="kc">Business Class</option>
+																<option value="economy">Economy</option>
+																<option value="business">Business Class</option>
+																<option value="first">First Class</option>
 															</select>
 														</div>
 													</div>
@@ -222,35 +224,41 @@ include "includes/actions.php";
 													</div>
 													<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
 														<div class="form-group mb-0">
-															<input name="adult" class="form-control fw-bold choosedate" type="text" placeholder="Return.." readonly="readonly">
+															<input name="return_date" class="form-control fw-bold choosedate" type="text" placeholder="Return.." readonly="readonly">
 														</div>
 													</div>
 												</div>
 											</div>
 											<div class="col-xl-1 col-lg-1 col-md-12">
 												<div class="form-groupp hdd-arrow mb-0">
-													<select name="passenger" class="adult form-control fw-bold">
+													<select name="passengers" min="1" class="adult form-control fw-bold" required>
 														<option value="">Select</option>
-														<option value="lv">1</option>
-														<option value="la">2</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
 													</select>
 												</div>
 											</div>
 											<div class="col-xl-1 col-lg-1 col-md-12">
 												<div class="form-groupp hdd-arrow mb-0">
-													<select name="children" class="children form-control fw-bold">
+													<select name="children" min="0" class="children form-control fw-bold">
 														<option value="">Select</option>
-														<option value="lv">0</option>
-														<option value="la">1</option>
+														<option value="0">0</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+													
 													</select>
 												</div>
 											</div>
 											<div class="col-xl-1 col-lg-1 col-md-12">
 												<div class="form-groupp hdd-arrow mb-0">
-													<select name="infants" class="infants form-control fw-bold">
+													<select name="infants" min="0" class="infants form-control fw-bold">
 														<option value="">Select</option>
-														<option value="lv">0</option>
-														<option value="la">1</option>
+														<option value="0">0</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
 													</select>
 												</div>
 											</div>
@@ -258,9 +266,9 @@ include "includes/actions.php";
 												<div class="form-groupp hdd-arrow mb-0">
 													<select name="class" class="class form-control fw-bold">
 														<option value="">Select</option>
-														<option value="lv">Economy</option>
-														<option value="la">First Class</option>
-														<option value="la">Business Class</option>
+														<option value="economy">Economy</option>
+														<option value="business">Business Class</option>
+														<option value="first">First Class</option>
 													</select>
 												</div>
 											</div>
@@ -2473,8 +2481,5 @@ include "includes/actions.php";
 	<!-- ============================================================== -->
 
 </body>
-
-
-<!-- Mirrored from shreethemes.net/geotrip-live/geotrip/home-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jul 2024 16:07:56 GMT -->
 
 </html>

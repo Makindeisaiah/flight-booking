@@ -1,3 +1,13 @@
+<?php
+include "includes/session.php"; 
+include "includes/db.php";
+include "includes/actions.php";
+
+
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -111,17 +121,6 @@
 			<div class="container">
 				<div class="row">
 
-					<!-- Breadcrumb -->
-					<div class="col-xl-12 col-lg-12 col-md-12">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#" class="text-primary">Home</a></li>
-								<li class="breadcrumb-item"><a href="#" class="text-primary">Flight</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Delhi To Los Angeles</li>
-							</ol>
-						</nav>
-					</div>
-
 					<!-- Flight Info -->
 					<div class="col-xl-12 col-lg-12 col-md-12">
 						<div class="row">
@@ -137,7 +136,7 @@
 													<span class="label fw-medium bg-light-success text-success">Business Class</span>
 												</div>
 												<div class="d-block">
-													<h4 class="mb-0">Delhi(DLH)<span class="text-muted-2 mx-3"><i class="fa-solid fa-arrow-right-arrow-left"></i></span>Los Angeles(LOS)</h4>
+													<h4 class="mb-0">Lagos<span class="text-muted-2 mx-3"><i class="fa-solid fa-arrow-right-arrow-left"></i></span>Los Angeles(LOS)</h4>
 													<div class="explotter-info">
 														<p class="detail ellipsis-container fw-semibold">
 															<span class="ellipsis-item__normal">17 Sep</span>
@@ -563,360 +562,14 @@
 				</div>
 			</div>
 		</section>
+		
 		<!-- ============================ Hotel Details End ================================== -->
 
 
-		<!-- ============================ Similar Flight Start ================================== -->
-		<section class="py-5">
-			<div class="container">
-
-				<div class="row align-items-center justify-content-between mb-3">
-					<div class="col-8">
-						<div class="upside-heading">
-							<h5 class="fw-bold fs-6 m-0">Similar Flights</h5>
-						</div>
-					</div>
-					<div class="col-4">
-						<div class="text-end grpx-btn">
-							<a href="#" class="btn btn-light-primary btn-md fw-medium">More<i
-									class="fa-solid fa-arrow-trend-up ms-2"></i></a>
-						</div>
-					</div>
-				</div>
-
-				<div class="row justify-content-center">
-					<div class="col-xl-12 col-lg-12 col-md-12 p-0">
-						<div class="main-carousel cols-3 arrow-hide">
-
-							<!-- Single Item -->
-							<div class="carousel-cell">
-								<div class="pop-touritem mb-4">
-									<a href="flight-search.php" class="card rounded-3 border m-0">
-										<div class="flight-thumb-wrapper">
-											<div class="popFlights-item-overHidden">
-												<img src="assets/img/destination/tr-1.jpg" class="img-fluid" alt="">
-											</div>
-										</div>
-										<div class="touritem-middle position-relative p-3">
-											<div class="touritem-flexxer">
-												<h4 class="city fs-6 m-0 fw-bold">
-													<span>New York</span>
-													<span class="svg-icon svg-icon-muted svg-icon-2hx px-1">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-															xmlns="http://www.w3.org/2000/svg">
-															<path
-																d="M17.4 7H4C3.4 7 3 7.4 3 8C3 8.6 3.4 9 4 9H17.4V7ZM6.60001 15H20C20.6 15 21 15.4 21 16C21 16.6 20.6 17 20 17H6.60001V15Z"
-																fill="currentColor" />
-															<path opacity="0.3"
-																d="M17.4 3V13L21.7 8.70001C22.1 8.30001 22.1 7.69999 21.7 7.29999L17.4 3ZM6.6 11V21L2.3 16.7C1.9 16.3 1.9 15.7 2.3 15.3L6.6 11Z"
-																fill="currentColor" />
-														</svg>
-													</span>
-													<span>Los Angeles</span>
-												</h4>
-												<p class="detail ellipsis-container">
-													<span class="ellipsis-item__normal">Round-trip</span>
-													<span class="separate ellipsis-item__normal"></span>
-													<span class="ellipsis-item">3 days</span>
-												</p>
-											</div>
-											<div class="flight-foots">
-												<h5 class="fs-5 low-price m-0"><span class="tag-span">From</span> <span
-														class="price">US$492</span></h5>
-											</div>
-										</div>
-									</a>
-								</div>
-							</div>
-
-							<!-- Single Item -->
-							<div class="carousel-cell">
-								<div class="pop-touritem mb-4">
-									<a href="flight-search.php" class="card rounded-3 border m-0">
-										<div class="flight-thumb-wrapper">
-											<div class="popFlights-item-overHidden">
-												<img src="assets/img/destination/tr-2.jpg" class="img-fluid" alt="">
-											</div>
-										</div>
-										<div class="touritem-middle position-relative p-3">
-											<div class="touritem-flexxer">
-												<h4 class="city fs-6 m-0 fw-bold">
-													<span>San Diego</span>
-													<span class="svg-icon svg-icon-muted svg-icon-2hx px-1">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-															xmlns="http://www.w3.org/2000/svg">
-															<path
-																d="M17.4 7H4C3.4 7 3 7.4 3 8C3 8.6 3.4 9 4 9H17.4V7ZM6.60001 15H20C20.6 15 21 15.4 21 16C21 16.6 20.6 17 20 17H6.60001V15Z"
-																fill="currentColor" />
-															<path opacity="0.3"
-																d="M17.4 3V13L21.7 8.70001C22.1 8.30001 22.1 7.69999 21.7 7.29999L17.4 3ZM6.6 11V21L2.3 16.7C1.9 16.3 1.9 15.7 2.3 15.3L6.6 11Z"
-																fill="currentColor" />
-														</svg>
-													</span>
-													<span>San Jose</span>
-												</h4>
-												<p class="detail ellipsis-container">
-													<span class="ellipsis-item__normal">Round-trip</span>
-													<span class="separate ellipsis-item__normal"></span>
-													<span class="ellipsis-item">3 days</span>
-												</p>
-											</div>
-											<div class="flight-foots">
-												<h5 class="fs-5 low-price m-0"><span class="tag-span">From</span> <span
-														class="price">US$492</span></h5>
-											</div>
-										</div>
-									</a>
-								</div>
-							</div>
-							
-							<!-- Single Item -->
-							<div class="carousel-cell">
-								<div class="pop-touritem mb-4">
-									<a href="flight-search.php" class="card rounded-3 border m-0">
-										<div class="flight-thumb-wrapper">
-											<div class="popFlights-item-overHidden">
-												<img src="assets/img/destination/tr-3.jpg" class="img-fluid" alt="">
-											</div>
-										</div>
-										<div class="touritem-middle position-relative p-3">
-											<div class="touritem-flexxer">
-												<h4 class="city fs-6 m-0 fw-bold">
-													<span>Dallas</span>
-													<span class="svg-icon svg-icon-muted svg-icon-2hx px-1">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-															xmlns="http://www.w3.org/2000/svg">
-															<path
-																d="M17.4 7H4C3.4 7 3 7.4 3 8C3 8.6 3.4 9 4 9H17.4V7ZM6.60001 15H20C20.6 15 21 15.4 21 16C21 16.6 20.6 17 20 17H6.60001V15Z"
-																fill="currentColor" />
-															<path opacity="0.3"
-																d="M17.4 3V13L21.7 8.70001C22.1 8.30001 22.1 7.69999 21.7 7.29999L17.4 3ZM6.6 11V21L2.3 16.7C1.9 16.3 1.9 15.7 2.3 15.3L6.6 11Z"
-																fill="currentColor" />
-														</svg>
-													</span>
-													<span>Philadelphia</span>
-												</h4>
-												<p class="detail ellipsis-container">
-													<span class="ellipsis-item__normal">Round-trip</span>
-													<span class="separate ellipsis-item__normal"></span>
-													<span class="ellipsis-item">3 days</span>
-												</p>
-											</div>
-											<div class="flight-foots">
-												<h5 class="fs-5 low-price m-0"><span class="tag-span">From</span> <span
-														class="price">US$492</span></h5>
-											</div>
-										</div>
-									</a>
-								</div>
-							</div>
-							
-							<!-- Single Item -->
-							<div class="carousel-cell">
-								<div class="pop-touritem mb-4">
-									<a href="flight-search.php" class="card rounded-3 border m-0">
-										<div class="flight-thumb-wrapper">
-											<div class="popFlights-item-overHidden">
-												<img src="assets/img/destination/tr-4.jpg" class="img-fluid" alt="">
-											</div>
-										</div>
-										<div class="touritem-middle position-relative p-3">
-											<div class="touritem-flexxer">
-												<h4 class="city fs-6 m-0 fw-bold">
-													<span>Nashville</span>
-													<span class="svg-icon svg-icon-muted svg-icon-2hx px-1">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-															xmlns="http://www.w3.org/2000/svg">
-															<path
-																d="M17.4 7H4C3.4 7 3 7.4 3 8C3 8.6 3.4 9 4 9H17.4V7ZM6.60001 15H20C20.6 15 21 15.4 21 16C21 16.6 20.6 17 20 17H6.60001V15Z"
-																fill="currentColor" />
-															<path opacity="0.3"
-																d="M17.4 3V13L21.7 8.70001C22.1 8.30001 22.1 7.69999 21.7 7.29999L17.4 3ZM6.6 11V21L2.3 16.7C1.9 16.3 1.9 15.7 2.3 15.3L6.6 11Z"
-																fill="currentColor" />
-														</svg>
-													</span>
-													<span>Denver</span>
-												</h4>
-												<p class="detail ellipsis-container">
-													<span class="ellipsis-item__normal">Round-trip</span>
-													<span class="separate ellipsis-item__normal"></span>
-													<span class="ellipsis-item">3 days</span>
-												</p>
-											</div>
-											<div class="flight-foots">
-												<h5 class="fs-5 low-price m-0"><span class="tag-span">From</span> <span
-														class="price">US$492</span></h5>
-											</div>
-										</div>
-									</a>
-								</div>
-							</div>
-							
-							<!-- Single Item -->
-							<div class="carousel-cell">
-								<div class="pop-touritem">
-									<a href="flight-search.php" class="card rounded-3 border m-0">
-										<div class="flight-thumb-wrapper">
-											<div class="popFlights-item-overHidden">
-												<img src="assets/img/destination/tr-5.jpg" class="img-fluid" alt="">
-											</div>
-										</div>
-										<div class="touritem-middle position-relative p-3">
-											<div class="touritem-flexxer">
-												<h4 class="city fs-6 m-0 fw-bold">
-													<span>Chicago</span>
-													<span class="svg-icon svg-icon-muted svg-icon-2hx px-1">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-															xmlns="http://www.w3.org/2000/svg">
-															<path
-																d="M17.4 7H4C3.4 7 3 7.4 3 8C3 8.6 3.4 9 4 9H17.4V7ZM6.60001 15H20C20.6 15 21 15.4 21 16C21 16.6 20.6 17 20 17H6.60001V15Z"
-																fill="currentColor" />
-															<path opacity="0.3"
-																d="M17.4 3V13L21.7 8.70001C22.1 8.30001 22.1 7.69999 21.7 7.29999L17.4 3ZM6.6 11V21L2.3 16.7C1.9 16.3 1.9 15.7 2.3 15.3L6.6 11Z"
-																fill="currentColor" />
-														</svg>
-													</span>
-													<span>San Francisco</span>
-												</h4>
-												<p class="detail ellipsis-container">
-													<span class="ellipsis-item__normal">Round-trip</span>
-													<span class="separate ellipsis-item__normal"></span>
-													<span class="ellipsis-item">3 days</span>
-												</p>
-											</div>
-											<div class="flight-foots">
-												<h5 class="fs-5 low-price m-0"><span class="tag-span">From</span> <span
-														class="price">US$492</span></h5>
-											</div>
-										</div>
-									</a>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- ============================ Similar Hotels End ================================== -->
-
 		<!-- ============================ Footer Start ================================== -->
-		<footer class="footer skin-dark-footer">
-			<div>
-				<div class="container">
-					<div class="row">
-
-						<div class="col-lg-3 col-md-4">
-							<div class="footer-widget">
-								<div class="d-flex align-items-start flex-column mb-3">
-									<div class="d-inline-block"><img src="assets/img/logo-light.png" class="img-fluid" width="160"
-											alt="Footer Logo">
-									</div>
-								</div>
-								<div class="footer-add pe-xl-3">
-									<p>We make your dream more beautiful & enjoyful with lots of happiness.</p>
-								</div>
-								<div class="foot-socials">
-									<ul>
-										<li><a href="JavaScript:Void(0);"><i class="fa-brands fa-facebook"></i></a></li>
-										<li><a href="JavaScript:Void(0);"><i class="fa-brands fa-linkedin"></i></a></li>
-										<li><a href="JavaScript:Void(0);"><i class="fa-brands fa-google-plus"></i></a></li>
-										<li><a href="JavaScript:Void(0);"><i class="fa-brands fa-twitter"></i></a></li>
-										<li><a href="JavaScript:Void(0);"><i class="fa-brands fa-dribbble"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-4">
-							<div class="footer-widget">
-								<h4 class="widget-title">The Navigation</h4>
-								<ul class="footer-menu">
-									<li><a href="JavaScript:Void(0);">Talent Marketplace</a></li>
-									<li><a href="JavaScript:Void(0);">Payroll Services</a></li>
-									<li><a href="JavaScript:Void(0);">Direct Contracts</a></li>
-									<li><a href="JavaScript:Void(0);">Hire Worldwide</a></li>
-									<li><a href="JavaScript:Void(0);">Hire in the USA</a></li>
-									<li><a href="JavaScript:Void(0);">How to Hire</a></li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="col-lg-2 col-md-4">
-							<div class="footer-widget">
-								<h4 class="widget-title">Our Resources</h4>
-								<ul class="footer-menu">
-									<li><a href="JavaScript:Void(0);">Free Business tools</a></li>
-									<li><a href="JavaScript:Void(0);">Affiliate Program</a></li>
-									<li><a href="JavaScript:Void(0);">Success Stories</a></li>
-									<li><a href="JavaScript:Void(0);">Upwork Reviews</a></li>
-									<li><a href="JavaScript:Void(0);">Resources</a></li>
-									<li><a href="JavaScript:Void(0);">Help & Support</a></li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="col-lg-2 col-md-6">
-							<div class="footer-widget">
-								<h4 class="widget-title">The Company</h4>
-								<ul class="footer-menu">
-									<li><a href="JavaScript:Void(0);">About Us</a></li>
-									<li><a href="JavaScript:Void(0);">Leadership</a></li>
-									<li><a href="JavaScript:Void(0);">Contact Us</a></li>
-									<li><a href="JavaScript:Void(0);">Investor Relations</a></li>
-									<li><a href="JavaScript:Void(0);">Trust, Safety & Security</a></li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="col-lg-3 col-md-6">
-							<div class="footer-widget">
-								<h4 class="widget-title">Payment Methods</h4>
-								<div class="pmt-wrap">
-									<img src="assets/img/payment.png" class="img-fluid" alt="">
-								</div>
-								<div class="our-prtwrap mt-4">
-									<div class="prtn-title">
-										<p class="text-light opacity-75 fw-medium">Our Partners</p>
-									</div>
-									<div class="prtn-thumbs d-flex align-items-center justify-content-start">
-										<div class="pmt-wrap pe-4">
-											<img src="assets/img/mytrip.png" class="img-fluid" alt="">
-										</div>
-										<div class="pmt-wrap pe-4">
-											<img src="assets/img/tripadv.png" class="img-fluid" alt="">
-										</div>
-										<div class="pmt-wrap pe-4">
-											<img src="assets/img/goibibo.png" class="img-fluid" alt="">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-
-			<div class="footer-bottom border-top">
-				<div class="container">
-					<div class="row align-items-center justify-content-between">
-
-						<div class="col-xl-6 col-lg-6 col-md-6">
-							<p class="mb-0">© 2023 GeoTrip Design by Themezhub.</p>
-						</div>
-
-						<div class="col-xl-6 col-lg-6 col-md-6">
-							<ul class="p-0 d-flex justify-content-start justify-content-md-end text-start text-md-end m-0">
-								<li><a href="#">Terms of services</a></li>
-								<li class="ms-3"><a href="#">Privacy Policies</a></li>
-								<li class="ms-3"><a href="#">Cookies</a></li>
-							</ul>
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</footer>
+		<?php
+		include "includes/footer.php";
+		?>
 		<!-- ============================ Footer End ================================== -->
 
 		<!-- Log In Modal -->
@@ -1401,6 +1054,7 @@
 
 
 	</div>
+	
 	<!-- ============================================================== -->
 	<!-- End Wrapper -->
 	<!-- ============================================================== -->

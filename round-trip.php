@@ -4,45 +4,19 @@ include "includes/session.php";
 include "includes/actions.php";
 include "includes/db.php";
 
-/// Database connection settings
-$host = 'localhost';
-$dbname = 'flight_booking';
-$username = 'root'; 
-$password = '';     
 
-try {
-    // Create a new PDO instance
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Check if departure and arrival parameters are set
-    if (isset($_GET['departure']) && isset($_GET['arrival']) && isset($_GET['departure_date']) ) {
-        $departure = $_GET['departure'];
-        $arrival = $_GET['arrival'];
-        $departure_date = $_GET['departure_date'];
-        // $return_date = $_GET['return_date'];
+// ? pagination for admin users list 
 
-        // Prepare the SQL query
-        $sql = "SELECT * FROM flight WHERE departure = :departure AND arrival = :arrival AND departure_date = :departure_date";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':departure', $departure, PDO::PARAM_STR);
-        $stmt->bindParam(':arrival', $arrival, PDO::PARAM_STR);
-        $stmt->bindParam(':departure_date', $departure_date, PDO::PARAM_STR);
-        // $stmt->bindParam(':return_date', $return_date, PDO::PARAM_STR);
-        $stmt->execute();
+$per_Page_user = 5;
 
-        // Fetch results
-        $flight = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $count = count($flight);
-    } else {
-        // If no parameters are set, show an empty result set
-        $flight = [];
-    }
-} catch (PDOException $e) {
-    echo 'Database error: ' . $e->getMessage();
-    exit;
-}
+$stmt = $pdo->query('SELECT count(*) FROM `flight`');
+$total_result_user = $stmt->fetchColumn();
+$total_page_user = ceil($total_result_user / $per_Page_user);
 
+// ? Current page
+$user_page = isset($_GET['user_page']) ? $_GET['user_page'] : 1;
+$offsets_user = ($user_page - 1) * $per_Page_user;
 
 ?>
 <!doctype html>
@@ -169,7 +143,7 @@ try {
                                             <div class="form-group hdd-arrow mb-0">
                                                 <label class="text-light text-uppercase opacity-75">Leaving From</label>
                                                 <select class="departure_from form-control fw-bold">
-                                                    <?php include "includes/airport-list.php"; ?>
+                                                    <?php include "includes/airport-list.php";?>
                                                 </select>
                                             </div>
                                         </div>
@@ -314,7 +288,8 @@ try {
                                                                 <div class="col">
                                                                     <div class="row gx-3 align-items-center">
                                                                         <div class="col-auto">
-                                                                            <div class="text-dark fw-bold"><?php echo htmlspecialchars($flight['departure_time']); ?></div>
+                                                                            <div class="text-dark fw-bold"><?php echo htmlspecialchars(date('H:i', strtotime($flight['departure_time'])), ENT_QUOTES, 'UTF-8'); ?>
+                                                                            </div>
                                                                             <div class="text-muted text-sm fw-medium"><?php echo htmlspecialchars($flight['departure']); ?></div>
                                                                         </div>
 
@@ -327,7 +302,7 @@ try {
                                                                         </div>
 
                                                                         <div class="col-auto">
-                                                                            <div class="text-dark fw-bold"><?php echo htmlspecialchars($flight['arrival_time']); ?></div>
+                                                                            <div class="text-dark fw-bold"><?php echo htmlspecialchars(date('H:i', strtotime($flight['arrival_time'])), ENT_QUOTES, 'UTF-8'); ?>                                                                            </div>
                                                                             <div class="text-muted text-sm fw-medium"><?php echo htmlspecialchars($flight['arrival']); ?></div>
                                                                         </div>
                                                                     </div>
@@ -345,7 +320,7 @@ try {
                                                         <div class="col-xl-12 col-lg-12 col-md-12">
                                                             <div class="d-flex align-items-center mb-2">
                                                                 <span class="label bg-light-success text-success me-2">Return</span>
-                                                                <span class="text-muted text-sm"><?php echo htmlspecialchars($flight['departure_date']); ?></span>
+                                                                <span class="text-muted text-sm"><?php echo htmlspecialchars($flight['return_date']); ?></span>
                                                             </div>
                                                         </div>
 
@@ -354,10 +329,10 @@ try {
                                                                 <div class="col-sm-auto">
                                                                     <div class="d-flex align-items-center justify-content-start">
                                                                         <div class="d-start fl-pic">
-                                                                            <img class="img-fluid" src="assets/img/air-3.png" width="45" alt="image">
+                                                                            <img class="img-fluid" src="assets/img/air-1.png" width="45" alt="image">
                                                                         </div>
                                                                         <div class="d-end fl-title ps-2">
-                                                                            <div class="text-dark fw-medium">Qutar Airways</div>
+                                                                            <div class="text-dark fw-medium"><?php echo htmlspecialchars($flight['airline']); ?></div>
                                                                             <div class="text-sm text-muted">Business</div>
                                                                         </div>
                                                                     </div>
@@ -366,8 +341,8 @@ try {
                                                                 <div class="col">
                                                                     <div class="row gx-3 align-items-center">
                                                                         <div class="col-auto">
-                                                                            <div class="text-dark fw-bold">14:10</div>
-                                                                            <div class="text-muted text-sm fw-medium">DEL</div>
+                                                                            <div class="text-dark fw-bold"><?php echo htmlspecialchars(date('H:i', strtotime($flight['return_departure_time'])), ENT_QUOTES, 'UTF-8'); ?></div>
+                                                                            <div class="text-muted text-sm fw-medium"><?php echo htmlspecialchars($flight['return_departure']); ?></div>
                                                                         </div>
 
                                                                         <div class="col text-center">
@@ -379,14 +354,14 @@ try {
                                                                         </div>
 
                                                                         <div class="col-auto">
-                                                                            <div class="text-dark fw-bold">19:30</div>
-                                                                            <div class="text-muted text-sm fw-medium">DOH</div>
+                                                                            <div class="text-dark fw-bold"><?php echo htmlspecialchars(date('H:i', strtotime($flight['return_arrival_time'])), ENT_QUOTES, 'UTF-8'); ?></div>
+                                                                            <div class="text-muted text-sm fw-medium"><?php echo htmlspecialchars($flight['return_arrival']); ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="col-md-auto">
-                                                                    <div class="text-dark fw-medium">5H 30M</div>
+                                                                    <div class="text-dark fw-medium"><?php echo htmlspecialchars($flight['return_eta']); ?></div>
                                                                     <div class="text-muted text-sm fw-medium">2 Stop</div>
                                                                 </div>
                                                             </div>
@@ -413,7 +388,7 @@ try {
                                                             </div>
                                                             <div class="text-start text-md-end">
                                                                 <span class="label bg-light-success text-success me-1">15% Off</span>
-                                                                <div class="text-dark fs-3 fw-bold lh-base">US$934</div>
+                                                                <div class="text-dark fs-3 fw-bold lh-base">US$<?php echo htmlspecialchars($flight['price']); ?></div>
                                                                 <div class="text-muted text-sm mb-2">Refundable</div>
                                                             </div>
 
@@ -438,19 +413,23 @@ try {
                                     <div class="pags card py-2 px-5">
                                         <nav aria-label="Page navigation example">
                                             <ul class="pagination m-0 p-0">
-                                                <li class="page-item">
+                                                <!-- <li class="page-item">
                                                     <a class="page-link" href="#" aria-label="Previous">
                                                         <span aria-hidden="true"><i class="fa-solid fa-arrow-left-long"></i></span>
                                                     </a>
-                                                </li>
-                                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                </li> -->
+                                                <?php for ($user_page = 1; $user_page <= $total_page_user; $user_page++) : ?>
+                                                <li class="page-item active <?php if (isset($_GET['user_page']) && $_GET['user_page'] == $user_page) {
+                                                                                                                  echo 'page_active';
+                                                                                                                } ?>"><a class="page-link" href="<?php echo "?tab=admin&user_page=$user_page"; ?>"><?php echo $user_page; ?></a></li>
+                                                                                                                <?php endfor; ?>
+                                                <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
                                                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                                                 <li class="page-item">
                                                     <a class="page-link" href="#" aria-label="Next">
                                                         <span aria-hidden="true"><i class="fa-solid fa-arrow-right-long"></i></span>
                                                     </a>
-                                                </li>
+                                                </li> -->
                                             </ul>
                                         </nav>
                                     </div>
@@ -476,310 +455,13 @@ try {
 
 
         <!-- ============================ Footer Start ================================== -->
-        <footer class="footer skin-dark-footer">
-            <div>
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-3 col-md-4">
-                            <div class="footer-widget">
-                                <div class="d-flex align-items-start flex-column mb-3">
-                                    <div class="d-inline-block"><img src="assets/img/logo-light.png" class="img-fluid" width="160"
-                                            alt="Footer Logo"></div>
-                                </div>
-                                <div class="footer-add pe-xl-3">
-                                    <p>We make your dream more beautiful & enjoyful with lots of happiness.</p>
-                                </div>
-                                <div class="foot-socials">
-                                    <ul>
-                                        <li><a href="JavaScript:Void(0);"><i class="fa-brands fa-facebook"></i></a></li>
-                                        <li><a href="JavaScript:Void(0);"><i class="fa-brands fa-linkedin"></i></a></li>
-                                        <li><a href="JavaScript:Void(0);"><i class="fa-brands fa-google-plus"></i></a></li>
-                                        <li><a href="JavaScript:Void(0);"><i class="fa-brands fa-twitter"></i></a></li>
-                                        <li><a href="JavaScript:Void(0);"><i class="fa-brands fa-dribbble"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4">
-                            <div class="footer-widget">
-                                <h4 class="widget-title">The Navigation</h4>
-                                <ul class="footer-menu">
-                                    <li><a href="JavaScript:Void(0);">Talent Marketplace</a></li>
-                                    <li><a href="JavaScript:Void(0);">Payroll Services</a></li>
-                                    <li><a href="JavaScript:Void(0);">Direct Contracts</a></li>
-                                    <li><a href="JavaScript:Void(0);">Hire Worldwide</a></li>
-                                    <li><a href="JavaScript:Void(0);">Hire in the USA</a></li>
-                                    <li><a href="JavaScript:Void(0);">How to Hire</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-2 col-md-4">
-                            <div class="footer-widget">
-                                <h4 class="widget-title">Our Resources</h4>
-                                <ul class="footer-menu">
-                                    <li><a href="JavaScript:Void(0);">Free Business tools</a></li>
-                                    <li><a href="JavaScript:Void(0);">Affiliate Program</a></li>
-                                    <li><a href="JavaScript:Void(0);">Success Stories</a></li>
-                                    <li><a href="JavaScript:Void(0);">Upwork Reviews</a></li>
-                                    <li><a href="JavaScript:Void(0);">Resources</a></li>
-                                    <li><a href="JavaScript:Void(0);">Help & Support</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-2 col-md-6">
-                            <div class="footer-widget">
-                                <h4 class="widget-title">The Company</h4>
-                                <ul class="footer-menu">
-                                    <li><a href="JavaScript:Void(0);">About Us</a></li>
-                                    <li><a href="JavaScript:Void(0);">Leadership</a></li>
-                                    <li><a href="JavaScript:Void(0);">Contact Us</a></li>
-                                    <li><a href="JavaScript:Void(0);">Investor Relations</a></li>
-                                    <li><a href="JavaScript:Void(0);">Trust, Safety & Security</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6">
-                            <div class="footer-widget">
-                                <h4 class="widget-title">Payment Methods</h4>
-                                <div class="pmt-wrap">
-                                    <img src="assets/img/payment.png" class="img-fluid" alt="">
-                                </div>
-                                <div class="our-prtwrap mt-4">
-                                    <div class="prtn-title">
-                                        <p class="text-light opacity-75 fw-medium">Our Partners</p>
-                                    </div>
-                                    <div class="prtn-thumbs d-flex align-items-center justify-content-start">
-                                        <div class="pmt-wrap pe-4">
-                                            <img src="assets/img/mytrip.png" class="img-fluid" alt="">
-                                        </div>
-                                        <div class="pmt-wrap pe-4">
-                                            <img src="assets/img/tripadv.png" class="img-fluid" alt="">
-                                        </div>
-                                        <div class="pmt-wrap pe-4">
-                                            <img src="assets/img/goibibo.png" class="img-fluid" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom border-top">
-                <div class="container">
-                    <div class="row align-items-center justify-content-between">
-
-                        <div class="col-xl-6 col-lg-6 col-md-6">
-                            <p class="mb-0">© 2023 GeoTrip Design by Themezhub.</p>
-                        </div>
-
-                        <div class="col-xl-6 col-lg-6 col-md-6">
-                            <ul class="p-0 d-flex justify-content-start justify-content-md-end text-start text-md-end m-0">
-                                <li><a href="#">Terms of services</a></li>
-                                <li class="ms-3"><a href="#">Privacy Policies</a></li>
-                                <li class="ms-3"><a href="#">Cookies</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <?php
+		include "includes/footer.php";
+		?>
         <!-- ============================ Footer End ================================== -->
 
         <!-- Book Flight -->
-        <div class="modal modal-lg fade" id="bookflight" tabindex="-1" aria-labelledby="bookflightModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title fs-6" id="bookflightModalLabel">Your Flight To Singapore</h4>
-                        <a href="#" class="text-muted fs-4" data-bs-dismiss="modal" aria-label="Close"><i
-                                class="fa-solid fa-square-xmark"></i></a>
-                    </div>
-                    <div class="modal-body px-4 py-4 px-xl-5 px-lg-5">
-                        <div class="upper-section01 mb-3 mt-3">
-                            <div class="alert alert-success" role="alert">
-                                13% lower CO2 emissions than the average of all flights we offer for this route
-                            </div>
-                        </div>
-
-                        <div class="airLines-fullsegment">
-
-                            <!-- Departure Route -->
-                            <div class="segmentDeparture-wrap">
-                                <div class="segmentDeparture-head mb-3">
-                                    <h4 class="fs-5 m-0">Flight to Singapore</h4>
-                                    <p class="text-muted-2 fw-medium text-md m-0">1 Stop · 19h 46m</p>
-                                </div>
-                                <div class="segmentDeparture-block">
-                                    <div class="segmentDeparture blockfirst">
-                                        <ul>
-                                            <li>
-                                                <div class="segmenttriox">
-                                                    <h6 class="fs-6 fw-medium m-0">LKO . Lucknow</h6>
-                                                    <p class="text-muted text-md m-0">Sat 7 Oct · 21:15</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="segmenttriox">
-                                                    <h6 class="fs-6 fw-medium m-0">DEL . Delhi</h6>
-                                                    <p class="text-muted text-md m-0">Sat 7 Oct · 22:30</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="segmentDeparture-blocklast">
-                                        <div class="d-flex align-items-start timeline-stprs">
-                                            <div class="timeline-stprsthumb"><img src="assets/img/air-2.png" class="img-fluid" width="40" alt="">
-                                            </div>
-                                            <div class="timeline-stprscaps ps-2">
-                                                <p class="text-sm m-0">Air India<br>AI812 · Economy<br>Flight time 1h 00m
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="segmentDeparture-overlay">
-                                    <div class="css-1894l3t"><span class="text-muted"><i class="fa-regular fa-clock me-1"></i>Layover 1h
-                                            36m</span></div>
-                                </div>
-                                <div class="segmentDeparture-block">
-                                    <div class="segmentDeparture blockfirst">
-                                        <ul>
-                                            <li>
-                                                <div class="segmenttriox">
-                                                    <h6 class="fs-6 fw-medium m-0">LKO . Lucknow</h6>
-                                                    <p class="text-muted text-md m-0">Sat 7 Oct · 21:15</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="segmenttriox">
-                                                    <h6 class="fs-6 fw-medium m-0">DEL . Delhi</h6>
-                                                    <p class="text-muted text-md m-0">Sat 7 Oct · 22:30</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="segmentDeparture-blocklast">
-                                        <div class="d-flex align-items-start timeline-stprs">
-                                            <div class="timeline-stprsthumb"><img src="assets/img/air-2.png" class="img-fluid" width="40" alt="">
-                                            </div>
-                                            <div class="timeline-stprscaps ps-2">
-                                                <p class="text-sm m-0">Air India<br>AI812 · Economy<br>Flight time 1h 00m
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- Returen Route -->
-                            <div class="segmentDeparture-wrap mt-5">
-                                <div class="segmentDeparture-head mb-3">
-                                    <h4 class="fs-5 m-0">Flight to Lucknow</h4>
-                                    <p class="text-muted-2 fw-medium text-md m-0">Non Stop · 19h 46m</p>
-                                </div>
-                                <div class="segmentDeparture-block">
-                                    <div class="segmentDeparture blockfirst">
-                                        <ul>
-                                            <li>
-                                                <div class="segmenttriox">
-                                                    <h6 class="fs-6 fw-medium m-0">SIN · Singapore Changi Apt</h6>
-                                                    <p class="text-muted text-md m-0">Sat 8 Oct · 21:15</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="segmenttriox">
-                                                    <h6 class="fs-6 fw-medium m-0">Loc . Lucknow</h6>
-                                                    <p class="text-muted text-md m-0">Sat 7 Oct · 22:30</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="segmentDeparture-blocklast">
-                                        <div class="d-flex align-items-start timeline-stprs">
-                                            <div class="timeline-stprsthumb"><img src="assets/img/air-2.png" class="img-fluid" width="40" alt="">
-                                            </div>
-                                            <div class="timeline-stprscaps ps-2">
-                                                <p class="text-sm m-0">IndiGo<br>6E1012 · Economy<br>Flight time 5h 20m
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="airLines-includedbaggases border-top border-bottom mt-4 py-4">
-                            <div class="departure-servicess mb-4">
-                                <h5 class="fs-6 mb-4">Flight To Singapore</h5>
-                                <div class="single-includedbaggases d-flex align-items-center justify-content-between mb-3">
-                                    <div class="includedbaggases-blc d-flex align-items-start">
-                                        <div class="includedbaggases-icons"><i class="fa-solid fa-suitcase-rolling fs-5"></i></div>
-                                        <div class="includedbaggases-caps ps-2">
-                                            <p class="m-0 lh-base">1 personal item</p>
-                                            <p class="m-0">Must go under the seat in front of you</p>
-                                        </div>
-                                    </div>
-                                    <div class="text-end"><span class="label bg-light-success text-success">Included</span></div>
-                                </div>
-                                <div class="single-includedbaggases d-flex align-items-center justify-content-between">
-                                    <div class="includedbaggases-blc d-flex align-items-start">
-                                        <div class="includedbaggases-icons"><i class="fa-solid fa-briefcase fs-5"></i></div>
-                                        <div class="includedbaggases-caps ps-2">
-                                            <p class="m-0 lh-base">1 cabin bag</p>
-                                            <p class="m-0">Max weight 8 kg</p>
-                                        </div>
-                                    </div>
-                                    <div class="text-end"><span class="label bg-light-success text-success">Included</span></div>
-                                </div>
-                            </div>
-                            <div class="departure-servicess">
-                                <h5 class="fs-6 mb-4">Flight To Lucknow</h5>
-                                <div class="single-includedbaggases d-flex align-items-center justify-content-between mb-3">
-                                    <div class="includedbaggases-blc d-flex align-items-start">
-                                        <div class="includedbaggases-icons"><i class="fa-solid fa-suitcase-rolling fs-5"></i></div>
-                                        <div class="includedbaggases-caps ps-2">
-                                            <p class="m-0 lh-base">1 personal item</p>
-                                            <p class="m-0">Must go under the seat in front of you</p>
-                                        </div>
-                                    </div>
-                                    <div class="text-end"><span class="label bg-light-success text-success">Included</span></div>
-                                </div>
-                                <div class="single-includedbaggases d-flex align-items-center justify-content-between">
-                                    <div class="includedbaggases-blc d-flex align-items-start">
-                                        <div class="includedbaggases-icons"><i class="fa-solid fa-briefcase fs-5"></i></div>
-                                        <div class="includedbaggases-caps ps-2">
-                                            <p class="m-0 lh-base">1 cabin bag</p>
-                                            <p class="m-0">Max weight 8 kg</p>
-                                        </div>
-                                    </div>
-                                    <div class="text-end"><span class="label bg-light-success text-success">Included</span></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="airLines-priceinfoy1 pt-4">
-                            <div class="airLines-flex d-flex align-items-center justify-content-between">
-                                <div class="airLinesyscb">
-                                    <h4 class="fs-4 m-0">US$479</h4>
-                                    <p class="text-md m-0">Total price for all travellers</p>
-                                </div>
-                                <div class="flds-ytu"><button class="btn btn-primary btn-md fw-medium">Book Now</button></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php include "includes/book-flight.php"; ?>
 
         <!-- Log In Modal -->
         <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginmodal" aria-hidden="true">

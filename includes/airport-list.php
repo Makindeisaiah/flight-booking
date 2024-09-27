@@ -1,5 +1,5 @@
 <option value="">Select</option>
-<option value="los">Murtala Muhammed International Airport, Lagos (LOS)</option>
+<option value="Lagos">Murtala Muhammed International Airport, Lagos (LOS)</option>
 <option value="sd">Nnamdi Azikiwe International Airport, Abuja (ABV)</option>
 <option value="sj">Asaba International Airport, Asaba (ABB)</option>
 <option value="ph">Port Bouet Airport, Abidjan (ABJ)</option>
@@ -25,7 +25,7 @@
 <option value="sa">Munich Airport, Munich (MUC)</option>
 <option value="hu">Manchester Airport, Manchester (MAN)</option>
 <option value="sa">Cardiff International Airport, Cardiff (CWL)</option>
-<option value="hu">London Gatwick Airport, London (CGW)</option>
+<option value="London">London Gatwick Airport, London (CGW)</option>
 <option value="sa">London Heathrow Airport, London (LHR)</option>
 <option value="hu">Newcastle Airport, Newcastle (NCL)</option>
 <option value="sa">Brisbane Archerfield Airport, Brisbane (ACF)</option>
